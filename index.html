@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin & Pauline — 18 Décembre 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #f5f1ec;
+            --text-color: #2c2c2c;
+            --accent-color: #a89274;
+            --light-accent: #d4c4b0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(245, 241, 236, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f1ec 0%, #e8dfd3 100%);
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            height: 80%;
+            border: 1px solid var(--light-accent);
+            pointer-events: none;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .hero h1 .amp {
+            font-style: italic;
+            color: var(--accent-color);
+            margin: 0 15px;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .hero-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-color);
+            margin: 25px auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 60px;
+        }
+
+        /* Notre Histoire */
+        .story {
+            text-align: center;
+        }
+
+        .story p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        /* Détails */
+        .details {
+            background-color: #fff;
+            max-width: none;
+            margin: 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .detail-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .detail-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .detail-card p {
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        /* Compte à rebours */
+        .countdown-section {
+            text-align: center;
+            background: linear-gradient(135deg, #e8dfd3 0%, #d4c4b0 100%);
+            max-width: none;
+            margin: 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--text-color);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        /* RSVP */
+        .rsvp {
+            text-align: center;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-accent);
+            background-color: transparent;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background-color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .countdown {
+                gap: 20px;
+            }
+
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">B & P</div>
+        <ul class="nav-links">
+            <li><a href="#histoire">Notre Histoire</a></li>
+            <li><a href="#details">Détails</a></li>
+            <li><a href="#countdown">Compte à rebours</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-subtitle">Nous nous marions</p>
+        <h1>Benjamin <span class="amp">&</span> Pauline</h1>
+        <div class="hero-line"></div>
+        <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
+    </section>
+
+    <!-- Notre Histoire -->
+    <section id="histoire" class="story">
+        <p class="section-subtitle">— Notre histoire —</p>
+        <h2 class="section-title">Une histoire d'amour</h2>
+        <p>Après de belles années partagées, nous avons décidé d'unir nos vies pour toujours.</p>
+        <p>Nous serions honorés de vous compter parmi nous pour célébrer ce moment unique et inoubliable.</p>
+    </section>
+
+    <!-- Détails -->
+    <section id="details" class="details">
+        <p class="section-subtitle">— Le grand jour —</p>
+        <h2 class="section-title">Les détails</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">⛪</div>
+                <h3>Cérémonie</h3>
+                <p>14h00</p>
+                <p>Lieu de la cérémonie</p>
+                <p>Adresse à venir</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">🥂</div>
+                <h3>Cocktail</h3>
+                <p>17h00</p>
+                <p>Lieu du cocktail</p>
+                <p>Adresse à venir</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">🎉</div>
+                <h3>Réception</h3>
+                <p>19h00</p>
+                <p>Lieu de la réception</p>
+                <p>Adresse à venir</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compte à rebours -->
+    <section id="countdown" class="countdown-section">
+        <p class="section-subtitle">— Plus que quelques jours —</p>
+        <h2 class="section-title">Compte à rebours</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">--</span>
+                <span class="countdown-label">Jours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">--</span>
+                <span class="countdown-label">Heures</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">--</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">--</span>
+                <span class="countdown-label">Secondes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="rsvp">
+        <p class="section-subtitle">— Confirmez votre présence —</p>
+        <h2 class="section-title">RSVP</h2>
+        <p>Merci de confirmer votre présence avant le 1er novembre 2026</p>
+        <form class="rsvp-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="presence">Serez-vous présent ?</label>
+                <select id="presence" required>
+                    <option value="">Choisir...</option>
+                    <option value="oui">Oui, avec joie !</option>
+                    <option value="non">Malheureusement non</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="guests">Nombre de personnes</label>
+                <input type="number" id="guests" min="1" max="5" value="1">
+            </div>
+            <div class="form-group">
+                <label for="message">Message (optionnel)</label>
+                <textarea id="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Benjamin & Pauline Makusa — 18.12.2026</p>
+    </footer>
+
+    <script>
+        // Compte à rebours
+        const weddingDate = new Date('2026-12-18T14:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<h3>C\'est aujourd\'hui ! 💍</h3>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // RSVP
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Merci pour votre réponse ! Nous avons hâte de partager ce moment avec vous. 💕');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
