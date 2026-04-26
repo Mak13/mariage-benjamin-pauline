@@ -76,93 +76,125 @@
         nav.scrolled .nav-links a { color: var(--text-color); }
         .nav-links a:hover { color: var(--accent-color); }
 
-        /* Hero avec photo en fond */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 0 20px;
-            background-image: 
-                linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 100%),
-                url('images/couverture.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-        }
+        /* Hero avec photo en fond - DÉZOOMÉ */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* Texte en bas */
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px 80px 20px;  /* Espace en bas pour le texte */
+    overflow: hidden;
+    color: white;
+}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 600px;
-            height: 70%;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            pointer-events: none;
-        }
+/* Couche 1 : photo floutée en fond pour combler */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/couverture.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.5);
+    transform: scale(1.1);
+    z-index: -2;
+}
 
-        .hero-subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
+/* Couche 2 : photo nette au centre, entière */
+.hero {
+    background-image: 
+        linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.7) 100%),
+        url('images/couverture.jpg');
+    background-size: contain;  /* Photo entière visible */
+    background-position: center top;
+    background-repeat: no-repeat;
+}
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 300;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            color: white;
-        }
+/* Cadre doré autour du texte uniquement */
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    height: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
 
-        .hero h1 .amp {
-            font-style: italic;
-            color: #e8c89a;
-            margin: 0 15px;
-        }
+.hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
 
-        .hero-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            letter-spacing: 4px;
-            margin-top: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
+.hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 300;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.6s forwards;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    color: white;
+    position: relative;
+    z-index: 2;
+}
 
-        .hero-line {
-            width: 60px;
-            height: 1px;
-            background-color: #e8c89a;
-            margin: 25px auto;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.2s forwards;
-        }
+.hero h1 .amp {
+    font-style: italic;
+    color: #e8c89a;
+    margin: 0 15px;
+}
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards, bounce 2s ease infinite 2.5s;
-        }
+.hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.9s forwards;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-line {
+    width: 60px;
+    height: 1px;
+    background-color: #e8c89a;
+    margin: 20px auto;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.2s forwards;
+    position: relative;
+    z-index: 2;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.5s forwards, bounce 2s ease infinite 2.5s;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
