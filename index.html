@@ -6,17 +6,14 @@
     <title>Benjamin & Pauline — 18 Décembre 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-color: #f5f1ec;
             --text-color: #2c2c2c;
             --accent-color: #a89274;
             --light-accent: #d4c4b0;
+            --green-accent: #8aa888;
         }
 
         body {
@@ -36,9 +33,7 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             padding: 25px 50px;
             display: flex;
             justify-content: space-between;
@@ -61,9 +56,7 @@
             transition: color 0.3s ease;
         }
 
-        nav.scrolled .nav-logo {
-            color: var(--text-color);
-        }
+        nav.scrolled .nav-logo { color: var(--text-color); }
 
         .nav-links {
             display: flex;
@@ -80,13 +73,8 @@
             transition: color 0.3s ease;
         }
 
-        nav.scrolled .nav-links a {
-            color: var(--text-color);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
+        nav.scrolled .nav-links a { color: var(--text-color); }
+        .nav-links a:hover { color: var(--accent-color); }
 
         /* Hero avec photo en fond */
         .hero {
@@ -110,8 +98,7 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
             max-width: 600px;
@@ -178,14 +165,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes bounce {
@@ -217,9 +198,7 @@
         }
 
         /* Notre Histoire */
-        .story {
-            text-align: center;
-        }
+        .story { text-align: center; }
 
         .story p {
             max-width: 700px;
@@ -228,40 +207,102 @@
             color: #555;
         }
 
-        /* Détails */
-        .details {
+        /* Lieu */
+        .venue {
             background-color: #fff;
+            max-width: none;
+            margin: 0;
+            text-align: center;
+        }
+
+        .venue-card {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            border: 1px solid var(--light-accent);
+            background-color: var(--bg-color);
+        }
+
+        .venue-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .venue-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+        }
+
+        .venue-address {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .venue-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 35px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .venue-link:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Programme */
+        .program {
+            background-color: var(--bg-color);
             max-width: none;
             margin: 0;
         }
 
-        .details-grid {
+        .program-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 60px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .detail-card {
+        .program-card {
             text-align: center;
-            padding: 30px;
+            padding: 30px 20px;
         }
 
-        .detail-icon {
-            font-size: 2.5rem;
+        .program-icon {
+            font-size: 2.2rem;
             color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .detail-card h3 {
-            font-size: 1.8rem;
             margin-bottom: 15px;
         }
 
-        .detail-card p {
-            color: #666;
+        .program-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .program-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--accent-color);
             margin-bottom: 8px;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* Compte à rebours */
@@ -280,9 +321,7 @@
             flex-wrap: wrap;
         }
 
-        .countdown-item {
-            text-align: center;
-        }
+        .countdown-item { text-align: center; }
 
         .countdown-number {
             font-family: 'Cormorant Garamond', serif;
@@ -300,12 +339,10 @@
         }
 
         /* RSVP */
-        .rsvp {
-            text-align: center;
-        }
+        .rsvp { text-align: center; }
 
         .rsvp-form {
-            max-width: 500px;
+            max-width: 550px;
             margin: 40px auto 0;
         }
 
@@ -342,6 +379,43 @@
             border-color: var(--accent-color);
         }
 
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid var(--light-accent);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .form-helper {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
         .btn {
             display: inline-block;
             padding: 15px 50px;
@@ -356,9 +430,7 @@
             font-family: inherit;
         }
 
-        .btn:hover {
-            background-color: var(--text-color);
-        }
+        .btn:hover { background-color: var(--text-color); }
 
         /* Footer */
         footer {
@@ -376,29 +448,13 @@
 
         /* Mobile */
         @media (max-width: 768px) {
-            nav {
-                padding: 20px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 80px 20px;
-            }
-
-            .countdown {
-                gap: 20px;
-            }
-
-            .countdown-number {
-                font-size: 2.5rem;
-            }
-
-            .hero {
-                background-attachment: scroll;
-            }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            section { padding: 80px 20px; }
+            .countdown { gap: 20px; }
+            .countdown-number { font-size: 2.5rem; }
+            .hero { background-attachment: scroll; }
+            .venue-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -407,7 +463,8 @@
         <div class="nav-logo">B & P</div>
         <ul class="nav-links">
             <li><a href="#histoire">Notre Histoire</a></li>
-            <li><a href="#details">Détails</a></li>
+            <li><a href="#lieu">Le Lieu</a></li>
+            <li><a href="#programme">Programme</a></li>
             <li><a href="#countdown">Compte à rebours</a></li>
             <li><a href="#rsvp">RSVP</a></li>
         </ul>
@@ -430,31 +487,51 @@
         <p>Nous serions honorés de vous compter parmi nous pour célébrer ce moment unique et inoubliable.</p>
     </section>
 
-    <!-- Détails -->
-    <section id="details" class="details">
-        <p class="section-subtitle">— Le grand jour —</p>
-        <h2 class="section-title">Les détails</h2>
-        <div class="details-grid">
-            <div class="detail-card">
-                <div class="detail-icon">⛪</div>
+    <!-- Lieu -->
+    <section id="lieu" class="venue">
+        <p class="section-subtitle">— Le lieu de la célébration —</p>
+        <h2 class="section-title">Où nous retrouver</h2>
+        <div class="venue-card">
+            <h3 class="venue-name">Ferme des Templiers</h3>
+            <p class="venue-subtitle">Biez Traiteur</p>
+            <p class="venue-address">📍 57 Rue de Pérenchies</p>
+            <p class="venue-address">59237 Verlinghem</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ferme+des+Templiers+57+Rue+de+P%C3%A9renchies+59237+Verlinghem" 
+               target="_blank" 
+               class="venue-link">
+                Voir sur la carte →
+            </a>
+        </div>
+    </section>
+
+    <!-- Programme -->
+    <section id="programme" class="program">
+        <p class="section-subtitle">— Le déroulé de la journée —</p>
+        <h2 class="section-title">Programme</h2>
+        <div class="program-grid">
+            <div class="program-card">
+                <div class="program-icon">💍</div>
                 <h3>Cérémonie</h3>
-                <p>14h00</p>
-                <p>Lieu de la cérémonie</p>
-                <p>Adresse à venir</p>
+                <p class="program-time">14h00</p>
+                <p>Échange des vœux</p>
             </div>
-            <div class="detail-card">
-                <div class="detail-icon">🥂</div>
+            <div class="program-card">
+                <div class="program-icon">🥂</div>
                 <h3>Cocktail</h3>
-                <p>17h00</p>
-                <p>Lieu du cocktail</p>
-                <p>Adresse à venir</p>
+                <p class="program-time">17h00</p>
+                <p>Vin d'honneur</p>
             </div>
-            <div class="detail-card">
-                <div class="detail-icon">🎉</div>
-                <h3>Réception</h3>
-                <p>19h00</p>
-                <p>Lieu de la réception</p>
-                <p>Adresse à venir</p>
+            <div class="program-card">
+                <div class="program-icon">🍽️</div>
+                <h3>Dîner</h3>
+                <p class="program-time">19h30</p>
+                <p>Repas festif</p>
+            </div>
+            <div class="program-card">
+                <div class="program-icon">💃</div>
+                <h3>Soirée</h3>
+                <p class="program-time">22h00</p>
+                <p>Danse et célébration</p>
             </div>
         </div>
     </section>
@@ -487,33 +564,66 @@
     <section id="rsvp" class="rsvp">
         <p class="section-subtitle">— Confirmez votre présence —</p>
         <h2 class="section-title">RSVP</h2>
-        <p>Merci de confirmer votre présence avant le 1er novembre 2026</p>
-        <form class="rsvp-form" onsubmit="handleSubmit(event)">
+        <p>Merci de confirmer votre présence avant le <strong>1er novembre 2026</strong></p>
+        
+        <form class="rsvp-form" 
+              action="https://formspree.io/f/VOTRE_ID_FORMSPREE" 
+              method="POST">
+            
             <div class="form-group">
-                <label for="name">Nom complet</label>
-                <input type="text" id="name" required>
+                <label for="name">Nom et prénom *</label>
+                <input type="text" id="name" name="nom" required>
             </div>
+            
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
             </div>
+            
             <div class="form-group">
-                <label for="presence">Serez-vous présent ?</label>
-                <select id="presence" required>
+                <label for="presence">Serez-vous présent(e) ? *</label>
+                <select id="presence" name="presence" required>
                     <option value="">Choisir...</option>
-                    <option value="oui">Oui, avec joie !</option>
-                    <option value="non">Malheureusement non</option>
+                    <option value="oui">Oui, avec joie ! 💕</option>
+                    <option value="non">Malheureusement non 😢</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="guests">Nombre de personnes</label>
-                <input type="number" id="guests" min="1" max="5" value="1">
+                <label for="guests">Nombre de personnes présentes *</label>
+                <input type="number" id="guests" name="nombre_personnes" min="1" max="10" value="1" required>
+                <p class="form-helper">Vous compris (adultes et enfants)</p>
             </div>
+            
             <div class="form-group">
-                <label for="message">Message (optionnel)</label>
-                <textarea id="message" rows="4"></textarea>
+                <label>Régime alimentaire</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="sans_porc" name="regime_sans_porc" value="Oui">
+                        <label for="sans_porc">🥩 Sans porc</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="vegetarien" name="regime_vegetarien" value="Oui">
+                        <label for="vegetarien">🥗 Végétarien</label>
+                    </div>
+                </div>
+                <p class="form-helper">Cochez si applicable. Précisez le nombre concerné dans le message ci-dessous si différent.</p>
             </div>
-            <button type="submit" class="btn">Envoyer</button>
+            
+            <div class="form-group">
+                <label for="allergies">Allergies ou intolérances</label>
+                <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message pour les mariés (optionnel)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Un petit mot, une précision sur votre régime alimentaire..."></textarea>
+            </div>
+            
+            <!-- Champ caché pour personnaliser le sujet de l'email -->
+            <input type="hidden" name="_subject" value="Nouvelle réponse RSVP - Mariage Benjamin & Pauline">
+            
+            <button type="submit" class="btn">Envoyer ma réponse</button>
         </form>
     </section>
 
@@ -562,13 +672,6 @@
                 });
             });
         });
-
-        // RSVP
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Merci pour votre réponse ! Nous avons hâte de partager ce moment avec vous. 💕');
-            event.target.reset();
-        }
     </script>
 </body>
 </html>
