@@ -414,44 +414,7 @@
             color: white;
         }
 
-        /* Brunch */
-        .brunch {
-            background-color: var(--bg-card);
-            text-align: center;
-        }
-
-        .brunch-card {
-            max-width: 500px;
-            margin: 30px auto 0;
-            padding: 50px 30px;
-            border: 1px solid var(--sage-light);
-            background-color: var(--bg-color);
-        }
-
-        .brunch-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-        }
-
-        .brunch-day {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-
-        .brunch-name {
-            font-style: italic;
-            font-size: 1.5rem;
-            color: var(--sage-dark);
-            margin-bottom: 15px;
-        }
-
-        .brunch-time {
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
+        
 
         /* Galerie */
         .gallery {
@@ -780,7 +743,6 @@
         <ul class="nav-links">
             <li><a href="#programme">Programme</a></li>
             <li><a href="#lieux">Les Lieux</a></li>
-            <li><a href="#brunch">Brunch</a></li>
             <li><a href="#galerie">Galerie</a></li>
             <li><a href="#rsvp">Répondre</a></li>
         </ul>
@@ -936,29 +898,6 @@
         </div>
     </section>
 
-    <!-- BRUNCH (avec motif feuillage en fond) -->
-    <section id="brunch" class="brunch foliage-bg">
-        <div class="section-container">
-            <h2 class="section-title">Et le lendemain...</h2>
-            <p class="section-subtitle">Pour prolonger ce beau moment</p>
-
-            <div class="brunch-card">
-                <svg class="brunch-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                    <ellipse cx="50" cy="65" rx="35" ry="8"/>
-                    <ellipse cx="50" cy="62" rx="35" ry="8" fill="white"/>
-                    <path d="M25,55 Q30,45 40,48 Q42,52 38,58 Q32,60 25,55 Z"/>
-                    <path d="M48,50 L48,62 L58,62 L58,50 Z"/>
-                    <path d="M58,53 Q62,53 62,57 Q62,60 58,60"/>
-                    <path d="M50,52 Q53,50 56,52"/>
-                    <circle cx="70" cy="55" r="6"/>
-                    <path d="M67,53 Q70,51 73,53"/>
-                </svg>
-                <p class="brunch-day">Dimanche 20 décembre 2026</p>
-                <h3 class="brunch-name">Brunch à la maison</h3>
-                <p class="brunch-time">• 12h00 •</p>
-            </div>
-        </div>
-    </section>
 
     <!-- GALERIE (avec motif feuillage en fond) -->
     <section id="galerie" class="gallery foliage-bg">
@@ -1066,14 +1005,6 @@
                 <div class="form-group">
                     <label for="allergies">Allergies ou intolérances</label>
                     <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
-                </div>
-                <div class="form-group">
-                    <label for="brunch_presence">Présent(e) au brunch du dimanche ?</label>
-                    <select id="brunch_presence" name="brunch_presence">
-                        <option value="">Choisir...</option>
-                        <option value="oui">Oui</option>
-                        <option value="non">Non</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="message">Un petit mot pour les mariés (optionnel)</label>
