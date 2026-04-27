@@ -9,14 +9,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-color: #1a1612;
-            --bg-color-light: #252019;
-            --bg-color-dark: #0f0a05;
-            --text-color: #f5e8d4;
+            --bg-color: #1a2820;
+            --bg-dark: #0d1813;
+            --bg-light: #243b30;
+            --text-color: #f0e8d4;
             --text-muted: #c9b896;
-            --accent-color: #c9a961;
-            --light-accent: #8b7355;
             --gold: #d4af37;
+            --gold-light: #e8c97a;
+            --green-accent: #4a6b54;
         }
 
         body {
@@ -25,35 +25,12 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(ellipse at top left, rgba(201,169,97,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(201,169,97,0.08) 0%, transparent 50%);
         }
 
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             letter-spacing: 2px;
-            color: var(--text-color);
-        }
-
-        /* Motif floral SVG en arrière-plan des sections */
-        .floral-bg {
-            position: relative;
-        }
-        .floral-bg::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%23c9a961' stroke-width='0.5' opacity='0.15'><path d='M100,50 Q120,70 100,100 Q80,70 100,50 Z'/><path d='M100,150 Q120,130 100,100 Q80,130 100,150 Z'/><path d='M50,100 Q70,80 100,100 Q70,120 50,100 Z'/><path d='M150,100 Q130,80 100,100 Q130,120 150,100 Z'/><circle cx='100' cy='100' r='3'/><path d='M30,30 Q40,40 50,30 Q40,20 30,30 Z'/><path d='M170,30 Q160,40 150,30 Q160,20 170,30 Z'/><path d='M30,170 Q40,160 50,170 Q40,180 30,170 Z'/><path d='M170,170 Q160,160 150,170 Q160,180 170,170 Z'/></g></svg>");
-            background-size: 300px 300px;
-            opacity: 0.6;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .floral-bg > * {
-            position: relative;
-            z-index: 1;
         }
 
         /* Navigation */
@@ -64,22 +41,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(15, 10, 5, 0.4);
+            background-color: rgba(13, 24, 19, 0.4);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background-color: rgba(15, 10, 5, 0.95);
-            border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+            background-color: rgba(13, 24, 19, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             letter-spacing: 4px;
-            color: var(--gold);
+            color: var(--gold-light);
         }
 
         .nav-links {
@@ -97,113 +74,143 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover { color: var(--gold-light); }
 
-        /* Hero avec photo en fond */
+        /* Hero - Photo entière + fond flouté + fleurs */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             text-align: center;
             position: relative;
-            padding: 0 20px;
-            background-image: 
-                linear-gradient(135deg, rgba(15,10,5,0.6) 0%, rgba(26,22,18,0.7) 100%),
-                url('images/couverture.png');
+            padding: 0 20px 80px;
+            overflow: hidden;
+            color: var(--text-color);
+        }
+
+        /* Couche 1 : photo floutée pour combler les bords */
+        .hero-bg-blur {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url('images/couverture.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            color: var(--text-color);
-            overflow: hidden;
-        }
-
-        /* Motif floral doré sur le hero */
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><g fill='none' stroke='%23d4af37' stroke-width='0.8' opacity='0.25'><path d='M200,100 Q230,140 200,200 Q170,140 200,100 Z'/><path d='M200,300 Q230,260 200,200 Q170,260 200,300 Z'/><path d='M100,200 Q140,170 200,200 Q140,230 100,200 Z'/><path d='M300,200 Q260,170 200,200 Q260,230 300,200 Z'/><circle cx='200' cy='200' r='4' fill='%23d4af37'/><path d='M50,50 Q80,80 100,50 Q80,20 50,50 Z'/><path d='M350,50 Q320,80 300,50 Q320,20 350,50 Z'/><path d='M50,350 Q80,320 100,350 Q80,380 50,350 Z'/><path d='M350,350 Q320,320 300,350 Q320,380 350,350 Z'/></g></svg>");
-            background-size: 500px 500px;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 600px;
-            height: 70%;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            pointer-events: none;
+            filter: blur(30px) brightness(0.3);
+            transform: scale(1.1);
             z-index: 1;
         }
 
-        .hero > * { position: relative; z-index: 2; }
+        /* Couche 2 : photo nette entière */
+        .hero-bg-photo {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url('images/couverture.png');
+            background-size: contain;
+            background-position: center top;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        /* Couche 3 : voile sombre dégradé pour lisibilité */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(13,24,19,0.3) 0%, 
+                rgba(13,24,19,0.3) 50%, 
+                rgba(13,24,19,0.95) 100%);
+            z-index: 3;
+        }
+
+        /* Décorations florales aux 4 coins */
+        .flower-corner {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%23d4af37' stroke-width='1.2' opacity='0.85'><path d='M20,180 Q40,140 70,120 Q90,110 100,90 Q105,75 100,60 Q90,45 75,40' stroke-width='1.5'/><ellipse cx='30' cy='160' rx='8' ry='15' transform='rotate(-30 30 160)' fill='%23d4af37' opacity='0.4'/><ellipse cx='50' cy='140' rx='8' ry='15' transform='rotate(-20 50 140)' fill='%23d4af37' opacity='0.4'/><ellipse cx='70' cy='120' rx='8' ry='15' transform='rotate(-10 70 120)' fill='%23d4af37' opacity='0.4'/><ellipse cx='90' cy='95' rx='8' ry='15' transform='rotate(20 90 95)' fill='%23d4af37' opacity='0.4'/><ellipse cx='100' cy='70' rx='8' ry='15' transform='rotate(40 100 70)' fill='%23d4af37' opacity='0.4'/><circle cx='80' cy='50' r='12' fill='%23d4af37' opacity='0.5'/><circle cx='80' cy='50' r='6' fill='%23e8c97a' opacity='0.7'/><path d='M80,38 Q85,30 90,38 M80,38 Q75,30 70,38 M80,62 Q85,70 90,62 M80,62 Q75,70 70,62 M68,50 Q60,45 60,55 M92,50 Q100,45 100,55' stroke-width='1' fill='none'/><circle cx='130' cy='30' r='8' fill='%23d4af37' opacity='0.5'/><circle cx='130' cy='30' r='4' fill='%23e8c97a' opacity='0.7'/><ellipse cx='40' cy='100' rx='5' ry='10' transform='rotate(-45 40 100)' fill='%23d4af37' opacity='0.4'/><ellipse cx='60' cy='80' rx='5' ry='10' transform='rotate(-35 60 80)' fill='%23d4af37' opacity='0.4'/></g></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .flower-tl { top: 0; left: 0; }
+        .flower-tr { top: 0; right: 0; transform: scaleX(-1); }
+        .flower-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+        .flower-br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+        /* Encadré central avec le texte */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            padding: 50px 40px;
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            background: rgba(13, 24, 19, 0.5);
+            backdrop-filter: blur(8px);
+            max-width: 600px;
+            margin: 0 20px;
+        }
 
         .hero-subtitle {
             font-size: 0.9rem;
             letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            color: var(--gold-light);
+            margin-bottom: 25px;
             opacity: 0;
             animation: fadeInUp 1s ease 0.3s forwards;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-            color: var(--accent-color);
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
             font-weight: 300;
-            margin-bottom: 20px;
+            color: var(--gold-light);
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 4px 20px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
             opacity: 0;
             animation: fadeInUp 1s ease 0.6s forwards;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212,175,55,0.2);
-            color: var(--gold);
         }
 
         .hero h1 .amp {
             font-style: italic;
-            color: var(--text-color);
+            color: white;
             margin: 0 15px;
-        }
-
-        .hero-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            letter-spacing: 4px;
-            margin-top: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-            color: var(--text-color);
         }
 
         .hero-line {
             width: 60px;
             height: 1px;
-            background-color: var(--gold);
-            margin: 25px auto;
+            background: var(--gold);
+            margin: 20px auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: white;
             opacity: 0;
             animation: fadeInUp 1s ease 1.2s forwards;
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--gold);
+            color: var(--gold-light);
             font-size: 0.75rem;
             letter-spacing: 3px;
+            z-index: 5;
             opacity: 0;
             animation: fadeInUp 1s ease 1.5s forwards, bounce 2s ease infinite 2.5s;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-            z-index: 2;
         }
 
         @keyframes fadeInUp {
@@ -218,9 +225,10 @@
 
         /* Sections */
         section {
-            padding: 120px 50px;
+            padding: 100px 30px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
@@ -228,7 +236,7 @@
             font-size: 3rem;
             font-weight: 300;
             margin-bottom: 20px;
-            color: var(--accent-color);
+            color: var(--gold-light);
         }
 
         .section-subtitle {
@@ -236,34 +244,36 @@
             font-size: 0.85rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--accent-color);
+            color: var(--gold);
             margin-bottom: 40px;
         }
 
-        /* Ornement floral séparateur */
-        .ornament {
+        /* Séparateur floral */
+        .floral-divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin: 30px auto 50px;
-            color: var(--accent-color);
         }
 
-        .ornament-line {
-            width: 80px;
+        .divider-line {
+            width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
-        .ornament-icon {
-            font-size: 1.5rem;
-            color: var(--gold);
+        .divider-leaf {
+            width: 40px;
+            height: 40px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23d4af37'><path d='M50,10 Q60,30 50,50 Q40,30 50,10 Z'/><path d='M50,90 Q60,70 50,50 Q40,70 50,90 Z'/><path d='M10,50 Q30,40 50,50 Q30,60 10,50 Z'/><path d='M90,50 Q70,40 50,50 Q70,60 90,50 Z'/><circle cx='50' cy='50' r='5'/></g></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
-        /* Notre Histoire */
+        /* Notre histoire */
         .story { text-align: center; }
-
         .story p {
             max-width: 700px;
             margin: 0 auto 20px;
@@ -273,7 +283,7 @@
 
         /* Lieu */
         .venue {
-            background-color: var(--bg-color-dark);
+            background-color: var(--bg-dark);
             max-width: none;
             margin: 0;
             text-align: center;
@@ -281,34 +291,40 @@
 
         .venue-card {
             max-width: 700px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(201,169,97,0.05) 0%, rgba(201,169,97,0.1) 100%);
-            border: 1px solid var(--light-accent);
+            margin: 30px auto 0;
+            padding: 70px 40px 50px;
+            background: linear-gradient(135deg, rgba(36,59,48,0.6) 0%, rgba(74,107,84,0.3) 100%);
+            border: 1px solid var(--gold);
             position: relative;
         }
 
-        .venue-card::before, .venue-card::after {
-            content: '❦';
+        .venue-card::before {
+            content: '';
             position: absolute;
-            color: var(--gold);
-            font-size: 1.5rem;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 60px;
+            background-color: var(--bg-dark);
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'><g fill='none' stroke='%23d4af37' stroke-width='1.5'><path d='M60,15 Q80,25 85,45 Q80,35 60,35 Q40,35 35,45 Q40,25 60,15'/><path d='M60,35 L60,75'/><path d='M60,42 Q50,46 45,55'/><path d='M60,42 Q70,46 75,55'/><path d='M60,55 Q48,60 42,70'/><path d='M60,55 Q72,60 78,70'/><circle cx='60' cy='15' r='3' fill='%23d4af37'/></g></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-        .venue-card::before { top: 20px; left: 50%; transform: translateX(-50%); }
-        .venue-card::after { bottom: 20px; left: 50%; transform: translateX(-50%); }
 
         .venue-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
+            color: var(--gold-light);
             margin-bottom: 10px;
-            color: var(--gold);
         }
 
         .venue-subtitle {
             font-size: 0.85rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--accent-color);
+            color: var(--gold);
             margin-bottom: 25px;
         }
 
@@ -323,7 +339,7 @@
             margin-top: 25px;
             padding: 12px 35px;
             border: 1px solid var(--gold);
-            color: var(--gold);
+            color: var(--gold-light);
             text-decoration: none;
             font-size: 0.8rem;
             letter-spacing: 3px;
@@ -333,14 +349,11 @@
 
         .venue-link:hover {
             background-color: var(--gold);
-            color: var(--bg-color-dark);
+            color: var(--bg-dark);
         }
 
         /* Programme */
-        .program {
-            max-width: none;
-            margin: 0;
-        }
+        .program { max-width: none; margin: 0; }
 
         .program-grid {
             display: grid;
@@ -353,32 +366,33 @@
         .program-card {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(201,169,97,0.05) 0%, transparent 100%);
-            border: 1px solid rgba(201,169,97,0.2);
+            background: linear-gradient(135deg, rgba(74,107,84,0.2) 0%, transparent 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
         }
 
         .program-card:hover {
-            background: linear-gradient(135deg, rgba(201,169,97,0.1) 0%, rgba(201,169,97,0.05) 100%);
-            border-color: var(--accent-color);
+            background: linear-gradient(135deg, rgba(74,107,84,0.4) 0%, rgba(74,107,84,0.2) 100%);
+            border-color: var(--gold);
             transform: translateY(-5px);
         }
 
         .program-icon {
             font-size: 2.2rem;
-            color: var(--gold);
+            color: var(--gold-light);
             margin-bottom: 15px;
         }
 
         .program-card h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
+            color: var(--text-color);
         }
 
         .program-time {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
-            color: var(--gold);
+            color: var(--gold-light);
             margin-bottom: 8px;
         }
 
@@ -387,9 +401,9 @@
             font-size: 0.95rem;
         }
 
-        /* Carrousel */
+        /* Galerie / Carrousel */
         .gallery {
-            background-color: var(--bg-color-dark);
+            background-color: var(--bg-dark);
             max-width: none;
             margin: 0;
             text-align: center;
@@ -400,8 +414,8 @@
             max-width: 1000px;
             margin: 40px auto 0;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--light-accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--gold);
         }
 
         .carousel-track {
@@ -432,8 +446,8 @@
         .carousel-caption {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(15,10,5,0.9) 100%);
-            color: var(--gold);
+            background: linear-gradient(180deg, transparent 0%, rgba(13,24,19,0.95) 100%);
+            color: var(--gold-light);
             padding: 60px 30px 30px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
@@ -446,8 +460,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(15, 10, 5, 0.7);
-            color: var(--gold);
+            background-color: rgba(13, 24, 19, 0.7);
+            color: var(--gold-light);
             border: 1px solid var(--gold);
             width: 50px;
             height: 50px;
@@ -463,7 +477,7 @@
 
         .carousel-btn:hover {
             background-color: var(--gold);
-            color: var(--bg-color-dark);
+            color: var(--bg-dark);
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -481,8 +495,8 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: var(--light-accent);
-            border: none;
+            background-color: var(--green-accent);
+            border: 1px solid var(--gold);
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 0;
@@ -496,17 +510,16 @@
         /* Compte à rebours */
         .countdown-section {
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-color-dark) 0%, var(--bg-color) 100%);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
             max-width: none;
             margin: 0;
             position: relative;
-            overflow: hidden;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             margin-top: 40px;
             flex-wrap: wrap;
         }
@@ -515,15 +528,15 @@
             text-align: center;
             padding: 25px 20px;
             min-width: 110px;
-            background: rgba(201,169,97,0.05);
-            border: 1px solid rgba(201,169,97,0.3);
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid var(--gold);
         }
 
         .countdown-number {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
             font-weight: 300;
-            color: var(--gold);
+            color: var(--gold-light);
             display: block;
         }
 
@@ -531,7 +544,7 @@
             font-size: 0.75rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--accent-color);
+            color: var(--gold);
         }
 
         /* RSVP */
@@ -553,7 +566,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 8px;
-            color: var(--accent-color);
+            color: var(--gold);
         }
 
         .form-group input,
@@ -561,8 +574,8 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid var(--light-accent);
-            background-color: rgba(201,169,97,0.05);
+            border: 1px solid var(--green-accent);
+            background-color: rgba(74, 107, 84, 0.15);
             font-family: inherit;
             font-size: 1rem;
             color: var(--text-color);
@@ -574,11 +587,11 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--gold);
-            background-color: rgba(201,169,97,0.1);
+            background-color: rgba(74, 107, 84, 0.25);
         }
 
         .form-group select option {
-            background-color: var(--bg-color-dark);
+            background-color: var(--bg-dark);
             color: var(--text-color);
         }
 
@@ -587,8 +600,8 @@
             flex-direction: column;
             gap: 12px;
             padding: 15px;
-            border: 1px solid var(--light-accent);
-            background-color: rgba(201,169,97,0.05);
+            border: 1px solid var(--green-accent);
+            background-color: rgba(74, 107, 84, 0.15);
         }
 
         .checkbox-item {
@@ -624,7 +637,7 @@
             display: inline-block;
             padding: 15px 50px;
             background-color: var(--gold);
-            color: var(--bg-color-dark);
+            color: var(--bg-dark);
             border: none;
             font-size: 0.85rem;
             letter-spacing: 3px;
@@ -636,18 +649,18 @@
         }
 
         .btn:hover {
-            background-color: var(--accent-color);
+            background-color: var(--gold-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 50px;
-            background-color: var(--bg-color-dark);
-            color: var(--accent-color);
-            border-top: 1px solid var(--light-accent);
+            background-color: var(--bg-dark);
+            color: var(--gold-light);
+            border-top: 1px solid var(--gold);
         }
 
         footer p {
@@ -664,13 +677,14 @@
             .countdown { gap: 15px; }
             .countdown-number { font-size: 2.5rem; }
             .countdown-item { min-width: 80px; padding: 15px 10px; }
-            .hero { background-attachment: scroll; }
-            .venue-card { padding: 40px 20px; }
+            .venue-card { padding: 60px 20px 40px; }
             .carousel-track { height: 400px; }
             .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; }
             .carousel-btn.prev { left: 10px; }
             .carousel-btn.next { right: 10px; }
             .carousel-caption { font-size: 1.1rem; padding: 40px 20px 20px; }
+            .flower-corner { width: 150px; height: 150px; }
+            .hero-content { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -686,23 +700,36 @@
         </ul>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero avec photo entière + décorations florales -->
     <section class="hero">
-        <p class="hero-subtitle">Nous nous marions</p>
-        <h1>Benjamin <span class="amp">&</span> Pauline</h1>
-        <div class="hero-line"></div>
-        <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
+        <div class="hero-bg-blur"></div>
+        <div class="hero-bg-photo"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Décorations florales aux 4 coins -->
+        <div class="flower-corner flower-tl"></div>
+        <div class="flower-corner flower-tr"></div>
+        <div class="flower-corner flower-bl"></div>
+        <div class="flower-corner flower-br"></div>
+        
+        <div class="hero-content">
+            <p class="hero-subtitle">Nous nous marions</p>
+            <h1>Benjamin <span class="amp">&</span> Pauline</h1>
+            <div class="hero-line"></div>
+            <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
+        </div>
+        
         <div class="scroll-indicator">↓ DÉCOUVRIR</div>
     </section>
 
     <!-- Notre Histoire -->
-    <section id="histoire" class="story floral-bg">
+    <section id="histoire" class="story">
         <p class="section-subtitle">— Notre histoire —</p>
         <h2 class="section-title">Une histoire d'amour</h2>
-        <div class="ornament">
-            <div class="ornament-line"></div>
-            <span class="ornament-icon">❦</span>
-            <div class="ornament-line"></div>
+        <div class="floral-divider">
+            <div class="divider-line"></div>
+            <div class="divider-leaf"></div>
+            <div class="divider-line"></div>
         </div>
         <p>Après de belles années partagées, nous avons décidé d'unir nos vies pour toujours.</p>
         <p>Nous serions honorés de vous compter parmi nous pour célébrer ce moment unique et inoubliable.</p>
@@ -725,13 +752,13 @@
     </section>
 
     <!-- Programme -->
-    <section id="programme" class="program floral-bg">
+    <section id="programme" class="program">
         <p class="section-subtitle">— Le déroulé de la journée —</p>
         <h2 class="section-title">Programme</h2>
-        <div class="ornament">
-            <div class="ornament-line"></div>
-            <span class="ornament-icon">✦</span>
-            <div class="ornament-line"></div>
+        <div class="floral-divider">
+            <div class="divider-line"></div>
+            <div class="divider-leaf"></div>
+            <div class="divider-line"></div>
         </div>
         <div class="program-grid">
             <div class="program-card">
@@ -765,10 +792,10 @@
     <section id="galerie" class="gallery">
         <p class="section-subtitle">— Nos plus beaux moments —</p>
         <h2 class="section-title">Notre Galerie</h2>
-        <div class="ornament">
-            <div class="ornament-line"></div>
-            <span class="ornament-icon">❦</span>
-            <div class="ornament-line"></div>
+        <div class="floral-divider">
+            <div class="divider-line"></div>
+            <div class="divider-leaf"></div>
+            <div class="divider-line"></div>
         </div>
         
         <div class="carousel" id="carousel">
@@ -825,10 +852,15 @@
     </section>
 
     <!-- RSVP -->
-    <section id="rsvp" class="rsvp floral-bg">
+    <section id="rsvp" class="rsvp">
         <p class="section-subtitle">— Confirmez votre présence —</p>
         <h2 class="section-title">RSVP</h2>
-        <p style="color: var(--text-muted);">Merci de confirmer votre présence avant le <strong style="color: var(--gold);">1er novembre 2026</strong></p>
+        <div class="floral-divider">
+            <div class="divider-line"></div>
+            <div class="divider-leaf"></div>
+            <div class="divider-line"></div>
+        </div>
+        <p style="color: var(--text-muted);">Merci de confirmer votre présence avant le <strong style="color: var(--gold-light);">1er novembre 2026</strong></p>
         
         <form class="rsvp-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
             <div class="form-group">
