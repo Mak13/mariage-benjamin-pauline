@@ -447,7 +447,7 @@
 			width: 100%; 
 			height: 100%;
 			opacity: 0;
-			transition: opacity 1s ease-in-out;
+			transition: opacity 1.5s ease-in-out;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -1265,7 +1265,7 @@ function startAutoplay() {
     autoplayInterval = setInterval(() => {
         currentSlide = (currentSlide + 1) % totalSlides;
         showSlide(currentSlide);
-    }, 5000); // Change toutes les 5 secondes
+    }, 10000); // Change toutes les 5 secondes
 }
 
 function resetAutoplay() {
