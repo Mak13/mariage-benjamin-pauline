@@ -76,56 +76,75 @@
 
         .nav-links a:hover { color: var(--gold-light); }
 
-        /* Hero - Photo entière + fond flouté + fleurs */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 0 20px 80px;
-            overflow: hidden;
-            color: var(--text-color);
-        }
+        /* Hero - Diaporama de fond avec photos qui changent */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px 80px;
+    overflow: hidden;
+    color: var(--text-color);
+    background-color: var(--bg-dark);
+}
 
-        /* Couche 1 : photo floutée pour combler les bords */
-        .hero-bg-blur {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('images/couverture.png');
-            background-size: cover;
-            background-position: center;
-            filter: blur(30px) brightness(0.3);
-            transform: scale(1.1);
-            z-index: 1;
-        }
+/* Conteneur du diaporama */
+.hero-slideshow {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+}
 
-        /* Couche 2 : photo nette entière */
-        .hero-bg-photo {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('images/couverture.png');
-            background-size: contain;
-            background-position: center top;
-            background-repeat: no-repeat;
-            z-index: 2;
-        }
+/* Chaque slide du diaporama (fond flouté + photo nette) */
+.hero-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
 
-        /* Couche 3 : voile sombre dégradé pour lisibilité */
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(180deg, 
-                rgba(13,24,19,0.3) 0%, 
-                rgba(13,24,19,0.3) 50%, 
-                rgba(13,24,19,0.95) 100%);
-            z-index: 3;
-        }
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Photo floutée pour combler les bords */
+.hero-slide-blur {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.3);
+    transform: scale(1.1);
+}
+
+/* Photo nette entière */
+.hero-slide-photo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* Voile sombre dégradé pour lisibilité */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(13,24,19,0.3) 0%, 
+        rgba(13,24,19,0.3) 50%, 
+        rgba(13,24,19,0.95) 100%);
+    z-index: 3;
+    pointer-events: none;
+}
 
         /* Décorations florales aux 4 coins */
         .flower-corner {
@@ -700,27 +719,61 @@
         </ul>
     </nav>
 
-    <!-- Hero avec photo entière + décorations florales -->
-    <section class="hero">
-        <div class="hero-bg-blur"></div>
-        <div class="hero-bg-photo"></div>
-        <div class="hero-overlay"></div>
-        
-        <!-- Décorations florales aux 4 coins -->
-        <div class="flower-corner flower-tl"></div>
-        <div class="flower-corner flower-tr"></div>
-        <div class="flower-corner flower-bl"></div>
-        <div class="flower-corner flower-br"></div>
-        
-        <div class="hero-content">
-            <p class="hero-subtitle">Nous nous marions</p>
-            <h1>Benjamin <span class="amp">&</span> Pauline</h1>
-            <div class="hero-line"></div>
-            <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
+    <!-- Hero avec diaporama animé -->
+<section class="hero">
+    
+    <!-- Diaporama de fond -->
+    <div class="hero-slideshow" id="heroSlideshow">
+        <div class="hero-slide active" data-image="images/couverture.png">
+            <div class="hero-slide-blur" style="background-image: url('images/couverture.png');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/couverture.png');"></div>
         </div>
+        <div class="hero-slide" data-image="images/photo1.jpg">
+            <div class="hero-slide-blur" style="background-image: url('images/photo1.jpg');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/photo1.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-image="images/photo2.jpg">
+            <div class="hero-slide-blur" style="background-image: url('images/photo2.jpg');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/photo2.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-image="images/photo3.jpg">
+            <div class="hero-slide-blur" style="background-image: url('images/photo3.jpg');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/photo3.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-image="images/photo4.jpg">
+            <div class="hero-slide-blur" style="background-image: url('images/photo4.jpg');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/photo4.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-image="images/photo5.jpg">
+            <div class="hero-slide-blur" style="background-image: url('images/photo5.jpg');"></div>
+            <div class="hero-slide-photo" style="background-image: url('images/photo5.jpg');"></div>
+        </div>
+        <div class="hero-slide" data-image="images/photo6.jpg">
+    <div class="hero-slide-blur" style="background-image: url('images/photo6.jpg');"></div>
+    <div class="hero-slide-photo" style="background-image: url('images/photo6.jpg');"></div>
+</div>
         
-        <div class="scroll-indicator">↓ DÉCOUVRIR</div>
-    </section>
+    </div>
+    
+    <!-- Voile sombre -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Décorations florales aux 4 coins -->
+    <div class="flower-corner flower-tl"></div>
+    <div class="flower-corner flower-tr"></div>
+    <div class="flower-corner flower-bl"></div>
+    <div class="flower-corner flower-br"></div>
+    
+    <!-- Encadré central avec le texte -->
+    <div class="hero-content">
+        <p class="hero-subtitle">Nous nous marions</p>
+        <h1>Benjamin <span class="amp">&</span> Pauline</h1>
+        <div class="hero-line"></div>
+        <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
+    </div>
+    
+    <div class="scroll-indicator">↓ DÉCOUVRIR</div>
+</section>
 
     <!-- Notre Histoire -->
     <section id="histoire" class="story">
@@ -943,6 +996,20 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Diaporama Hero - Change toutes les 20 secondes avec fondu
+let currentHeroSlide = 0;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const totalHeroSlides = heroSlides.length;
+
+function nextHeroSlide() {
+    heroSlides[currentHeroSlide].classList.remove('active');
+    currentHeroSlide = (currentHeroSlide + 1) % totalHeroSlides;
+    heroSlides[currentHeroSlide].classList.add('active');
+}
+
+// Change toutes les 20 secondes
+setInterval(nextHeroSlide, 20000);
 
         // Carrousel
         let currentSlide = 0;
