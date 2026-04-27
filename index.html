@@ -32,22 +32,27 @@
             font-weight: 400;
         }
 
-        /* Motif feuillage SVG répété */
-        .foliage-pattern {
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%238a9a7b' stroke-width='0.6' opacity='0.6'><path d='M20,180 Q40,160 50,140 Q55,125 50,110 M50,140 L40,135 M50,140 L60,135 M50,125 L40,120 M50,125 L60,120 M50,110 L40,105 M50,110 L60,105'/><path d='M180,20 Q160,40 150,60 Q145,75 150,90 M150,60 L160,55 M150,60 L140,55 M150,75 L160,70 M150,75 L140,70 M150,90 L160,85 M150,90 L140,85'/><path d='M100,30 Q120,50 130,80 Q135,95 130,110 M130,80 L140,75 M130,80 L120,75 M130,95 L140,90 M130,95 L120,90'/><path d='M30,100 Q50,90 70,95 Q85,100 95,115 M70,95 L65,85 M70,95 L75,85 M85,105 L80,95 M85,105 L90,95'/><path d='M170,150 Q150,140 130,145 Q115,150 105,165 M130,145 L135,135 M130,145 L125,135'/><ellipse cx='25' cy='25' rx='3' ry='8' transform='rotate(45 25 25)' fill='%238a9a7b' opacity='0.4'/><ellipse cx='175' cy='175' rx='3' ry='8' transform='rotate(45 175 175)' fill='%238a9a7b' opacity='0.4'/><circle cx='100' cy='100' r='2' fill='%238a9a7b' opacity='0.5'/></g></svg>");
-            background-size: 200px 200px;
-            background-repeat: repeat;
+        /* ============================================ */
+        /* MOTIF FEUILLAGE DU FAIRE-PART (en arrière-plan des sections) */
+        /* ============================================ */
+        .foliage-bg {
+            position: relative;
         }
 
-        /* Bordure feuillage encadrant les sections (comme le faire-part) */
-        .leaf-border {
+        .foliage-bg::before {
+            content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'><g fill='none' stroke='%238a9a7b' stroke-width='0.7' opacity='0.7'><path d='M10,140 Q25,120 35,100 Q40,85 35,70 Q30,55 20,45'/><path d='M35,100 L25,98 M35,100 L45,98 M35,85 L25,83 M35,85 L45,83 M30,70 L20,68 M30,70 L40,68 M25,55 L15,53 M25,55 L35,53'/><path d='M140,10 Q120,25 100,35 Q85,40 70,35 Q55,30 45,20'/><path d='M100,35 L98,25 M100,35 L98,45 M85,30 L83,20 M85,30 L83,40 M70,25 L68,15 M70,25 L68,35'/><circle cx='15' cy='15' r='2' fill='%238a9a7b' opacity='0.6'/></g></svg>");
-            background-size: 150px 150px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'><g fill='none' stroke='%238a9a7b' stroke-width='0.8' opacity='0.55'><path d='M30,210 Q50,180 60,150 Q65,130 60,110 Q55,90 45,75 Q35,60 30,45'/><path d='M60,150 L48,148 M60,150 L72,148 M60,135 L48,133 M60,135 L72,133 M58,120 L46,118 M58,120 L70,118 M55,105 L43,103 M55,105 L67,103 M50,90 L40,88 M50,90 L60,88 M45,75 L35,73 M45,75 L55,73 M40,60 L30,58 M40,60 L50,58'/><path d='M220,40 Q200,60 180,75 Q160,85 140,80 Q120,75 105,65 Q90,55 75,40'/><path d='M180,75 L178,63 M180,75 L178,87 M160,80 L158,68 M160,80 L158,92 M140,80 L138,68 M140,80 L138,92 M120,72 L118,60 M120,72 L118,84 M105,65 L103,53 M105,65 L103,77'/><path d='M125,30 Q145,50 155,80 Q160,95 155,115 Q150,135 140,150'/><path d='M155,80 L165,75 M155,80 L145,75 M158,95 L168,90 M158,95 L148,90 M155,110 L165,105 M155,110 L145,105 M150,125 L160,120 M150,125 L140,120'/><path d='M40,130 Q60,120 80,125 Q95,128 105,140 Q115,155 110,175'/><path d='M80,125 L75,115 M80,125 L85,115 M95,128 L90,118 M95,128 L100,118 M105,140 L100,130 M105,140 L110,130'/><path d='M210,180 Q190,170 170,175 Q155,180 145,195 Q135,210 130,225'/><path d='M170,175 L168,165 M170,175 L172,185 M155,180 L153,170 M155,180 L157,190 M145,195 L143,185 M145,195 L147,205'/><circle cx='25' cy='25' r='3' fill='%238a9a7b' opacity='0.5'/><circle cx='225' cy='225' r='3' fill='%238a9a7b' opacity='0.5'/><circle cx='225' cy='25' r='3' fill='%238a9a7b' opacity='0.5'/><circle cx='25' cy='225' r='3' fill='%238a9a7b' opacity='0.5'/><ellipse cx='200' cy='130' rx='3' ry='8' transform='rotate(30 200 130)' fill='%238a9a7b' opacity='0.4'/><ellipse cx='195' cy='140' rx='3' ry='8' transform='rotate(50 195 140)' fill='%238a9a7b' opacity='0.4'/><ellipse cx='50' cy='190' rx='3' ry='8' transform='rotate(-30 50 190)' fill='%238a9a7b' opacity='0.4'/><ellipse cx='60' cy='195' rx='3' ry='8' transform='rotate(-10 60 195)' fill='%238a9a7b' opacity='0.4'/></g></svg>");
+            background-size: 250px 250px;
             background-repeat: repeat;
             pointer-events: none;
-            opacity: 0.8;
+            z-index: 0;
+        }
+
+        .foliage-bg > * {
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -58,21 +63,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(250, 247, 240, 0.92);
+            background-color: rgba(250, 247, 240, 0.15);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
         }
 
         nav.scrolled {
+            background-color: rgba(250, 247, 240, 0.95);
             border-bottom: 1px solid var(--sage-light);
         }
 
         .nav-logo {
             font-family: 'Dancing Script', cursive;
             font-size: 1.8rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .nav-logo {
             color: var(--sage-dark);
+            text-shadow: none;
         }
 
         .nav-links {
@@ -82,57 +94,45 @@
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: white;
             text-decoration: none;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
-        .nav-links a:hover { color: var(--sage-green); }
+        nav.scrolled .nav-links a {
+            color: var(--text-color);
+            text-shadow: none;
+        }
 
-        /* HERO - Style faire-part avec bordure feuillage */
+        .nav-links a:hover { color: var(--sage-light); }
+        nav.scrolled .nav-links a:hover { color: var(--sage-green); }
+
+        /* ============================================ */
+        /* HERO - Photos en plein écran avec diaporama */
+        /* ============================================ */
         .hero {
             min-height: 100vh;
             position: relative;
-            padding: 80px 40px 60px;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
-            background-color: var(--bg-color);
-        }
-
-        /* Bordure feuillage tout autour */
-        .hero-leaf-border {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><g fill='none' stroke='%238a9a7b' stroke-width='0.7' opacity='0.85'><path d='M20,160 Q35,140 45,120 Q50,105 45,90 Q40,75 30,65 Q20,55 15,40'/><path d='M45,120 L35,118 M45,120 L55,118 M45,105 L35,103 M45,105 L55,103 M40,90 L30,88 M40,90 L50,88 M35,75 L25,73 M35,75 L45,73 M30,65 L20,63 M30,65 L40,63'/><path d='M160,20 Q140,35 120,45 Q105,50 90,45 Q75,40 65,30'/><path d='M120,45 L118,35 M120,45 L118,55 M105,50 L103,40 M105,50 L103,60 M90,45 L88,35 M90,45 L88,55 M75,40 L73,30 M75,40 L73,50 M65,30 L63,20 M65,30 L63,40'/><path d='M120,160 Q140,140 150,120 Q155,105 150,90'/><path d='M150,120 L160,118 M150,120 L140,118 M150,105 L160,103 M150,105 L140,103 M145,90 L155,88 M145,90 L135,88'/><path d='M20,40 Q40,55 50,75 Q55,90 50,105'/><path d='M50,75 L60,73 M50,75 L40,73 M50,90 L60,88 M50,90 L40,88 M50,105 L60,103 M50,105 L40,103'/><circle cx='15' cy='15' r='2.5' fill='%238a9a7b'/><circle cx='165' cy='15' r='2.5' fill='%238a9a7b'/><circle cx='15' cy='165' r='2.5' fill='%238a9a7b'/><circle cx='165' cy='165' r='2.5' fill='%238a9a7b'/></g></svg>");
-            background-size: 180px 180px;
-            background-repeat: repeat;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Carte centrale du hero */
-        .hero-card {
-            position: relative;
-            z-index: 2;
-            background-color: var(--bg-card);
-            padding: 70px 50px;
-            max-width: 700px;
-            width: 100%;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(138, 154, 123, 0.15);
+            padding: 0 20px 80px;
             overflow: hidden;
+            color: white;
         }
 
-        /* Diaporama photo en fond de carte */
+        /* Diaporama photo en fond plein écran */
         .hero-slideshow {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: 0;
+            z-index: 1;
         }
 
         .hero-slide {
@@ -141,90 +141,140 @@
             width: 100%; height: 100%;
             opacity: 0;
             transition: opacity 3s ease-in-out;
-            background-size: cover;
-            background-position: center;
         }
 
-        .hero-slide.active { opacity: 0.15; }
+        .hero-slide.active {
+            opacity: 1;
+        }
 
+        /* Photo floutée pour combler les bords */
+        .hero-slide-blur {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(30px) brightness(0.5);
+            transform: scale(1.1);
+        }
+
+        /* Photo nette entière */
+        .hero-slide-photo {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: contain;
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
+
+        /* Voile sombre dégradé en bas pour lisibilité du texte */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(0,0,0,0.1) 0%, 
+                rgba(0,0,0,0.1) 40%, 
+                rgba(0,0,0,0.85) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Décorations florales du faire-part aux 4 coins */
+        .hero-corner {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%23b5c4a3' stroke-width='1.2' opacity='0.9'><path d='M20,180 Q40,150 55,120 Q65,100 60,80 Q55,60 45,45 Q35,30 25,20'/><path d='M55,120 L42,118 M55,120 L68,118 M55,105 L42,103 M55,105 L68,103 M55,90 L42,88 M55,90 L68,88 M50,75 L37,73 M50,75 L63,73 M45,60 L32,58 M45,60 L58,58 M40,45 L27,43 M40,45 L53,43'/><path d='M100,40 Q90,55 85,75 Q80,90 85,105'/><path d='M85,75 L75,73 M85,75 L95,73 M83,90 L73,88 M83,90 L93,88'/><circle cx='75' cy='35' r='4' fill='%23b5c4a3' opacity='0.7'/><ellipse cx='30' cy='160' rx='4' ry='10' transform='rotate(-30 30 160)' fill='%23b5c4a3' opacity='0.5'/><ellipse cx='40' cy='170' rx='4' ry='10' transform='rotate(-15 40 170)' fill='%23b5c4a3' opacity='0.5'/></g></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-corner-tl { top: 60px; left: 0; }
+        .hero-corner-tr { top: 60px; right: 0; transform: scaleX(-1); }
+        .hero-corner-bl { bottom: 0; left: 0; transform: scaleY(-1); display: none; }
+        .hero-corner-br { bottom: 0; right: 0; transform: scale(-1, -1); display: none; }
+
+        /* Contenu hero (texte) - placé en bas pour ne pas cacher les visages */
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 4;
+            max-width: 700px;
+            padding: 30px 40px;
         }
 
         .hero-title {
-            font-style: italic;
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            color: var(--text-color);
-            font-weight: 400;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-            font-style: italic;
-            font-size: 1.3rem;
-            color: var(--text-color);
-            margin-bottom: 25px;
-            font-weight: 400;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         .green-line {
             width: 80px;
             height: 2px;
-            background-color: var(--sage-green);
-            margin: 20px auto;
+            background-color: var(--sage-light);
+            margin: 15px auto;
             border: none;
         }
 
         .hero-date {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            margin: 25px 0 15px;
-            font-weight: 400;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: white;
+            margin: 15px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
-        .heart-green {
-            color: var(--heart-green);
+        .heart-hero {
+            color: var(--sage-light);
             font-size: 1.5rem;
             display: block;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .hero-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             letter-spacing: 5px;
-            color: var(--text-color);
-            margin-top: 30px;
+            color: white;
+            margin-top: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .hero-names .amp {
-            font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            color: var(--sage-green);
+            color: var(--sage-light);
             margin: 0 8px;
         }
 
-        .mariage-script {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: var(--sage-green);
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            z-index: 5;
+            opacity: 0.8;
+            animation: bounce 2s ease infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
-        .mariage-script::before, .mariage-script::after {
-            content: '';
-            width: 60px;
-            height: 1px;
-            background-color: var(--sage-green);
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* Sections */
+        /* ============================================ */
+        /* SECTIONS avec motif feuillage en fond */
+        /* ============================================ */
         section {
             padding: 100px 40px;
             position: relative;
@@ -256,10 +306,9 @@
             margin-right: auto;
         }
 
-        /* Programme avec illustrations dessinées */
+        /* Programme */
         .program-section {
             background-color: var(--bg-card);
-            padding: 100px 40px;
         }
 
         .program-grid {
@@ -288,16 +337,16 @@
         }
 
         .program-icon {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 20px;
         }
 
         .program-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-color);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .program-time {
@@ -314,10 +363,6 @@
         }
 
         /* Lieux */
-        .venues {
-            background-color: var(--bg-color);
-        }
-
         .venues-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -327,7 +372,9 @@
 
         .venue-block {
             text-align: center;
-            padding: 30px;
+            padding: 40px 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--sage-light);
         }
 
         .venue-label {
@@ -367,20 +414,18 @@
             color: white;
         }
 
-        /* Brunch dimanche */
+        /* Brunch */
         .brunch {
             background-color: var(--bg-card);
             text-align: center;
-            padding: 80px 40px;
         }
 
         .brunch-card {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 30px auto 0;
             padding: 50px 30px;
             border: 1px solid var(--sage-light);
             background-color: var(--bg-color);
-            position: relative;
         }
 
         .brunch-icon {
@@ -408,9 +453,8 @@
             color: var(--text-color);
         }
 
-        /* Galerie carrousel */
+        /* Galerie */
         .gallery {
-            background-color: var(--bg-color);
             text-align: center;
         }
 
@@ -498,7 +542,7 @@
 
         /* Compte à rebours */
         .countdown-section {
-            background-color: var(--bg-color);
+            background-color: var(--bg-card);
             text-align: center;
         }
 
@@ -514,7 +558,7 @@
             text-align: center;
             padding: 25px 20px;
             min-width: 110px;
-            background-color: var(--bg-card);
+            background-color: var(--bg-color);
             border: 1px solid var(--sage-light);
         }
 
@@ -538,7 +582,6 @@
 
         /* RSVP */
         .rsvp {
-            background-color: var(--bg-card);
             text-align: center;
         }
 
@@ -566,6 +609,9 @@
             max-width: 550px;
             margin: 30px auto 0;
             text-align: left;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border: 1px solid var(--sage-light);
         }
 
         .form-group {
@@ -656,12 +702,13 @@
             transform: translateY(-2px);
         }
 
-        /* Footer / Contact */
+        /* Footer */
         footer {
             background-color: var(--bg-color);
             text-align: center;
             padding: 80px 40px 40px;
             border-top: 1px solid var(--sage-light);
+            position: relative;
         }
 
         .footer-names {
@@ -711,8 +758,9 @@
         @media (max-width: 768px) {
             nav { padding: 15px 20px; }
             .nav-links { display: none; }
-            .hero { padding: 70px 20px 40px; }
-            .hero-card { padding: 50px 25px; }
+            .hero { padding: 0 15px 40px; }
+            .hero-content { padding: 20px; }
+            .hero-corner { width: 130px; height: 130px; }
             section { padding: 70px 20px; }
             .program-grid { grid-template-columns: 1fr 1fr; }
             .program-item:not(:last-child)::after { display: none; }
@@ -722,8 +770,7 @@
             .carousel-track { height: 350px; }
             .carousel-btn.prev { left: 20px; }
             .carousel-btn.next { right: 20px; }
-            .mariage-script { font-size: 2rem; }
-            .mariage-script::before, .mariage-script::after { width: 30px; }
+            .rsvp-form { padding: 25px; }
         }
     </style>
 </head>
@@ -739,43 +786,63 @@
         </ul>
     </nav>
 
-    <!-- HERO Style faire-part -->
+    <!-- HERO - Photos plein écran avec diaporama -->
     <section class="hero">
-        <div class="hero-leaf-border"></div>
-        
-        <div class="hero-card">
-            <!-- Diaporama photo en fond -->
-            <div class="hero-slideshow" id="heroSlideshow">
-                <div class="hero-slide active" style="background-image: url('images/couverture.png');"></div>
-                <div class="hero-slide" style="background-image: url('images/photo1.jpg');"></div>
-                <div class="hero-slide" style="background-image: url('images/photo2.jpg');"></div>
-                <div class="hero-slide" style="background-image: url('images/photo3.jpg');"></div>
-                <div class="hero-slide" style="background-image: url('images/photo4.jpg');"></div>
-                <div class="hero-slide" style="background-image: url('images/photo5.jpg');"></div>
+        <!-- Diaporama photo en plein écran -->
+        <div class="hero-slideshow" id="heroSlideshow">
+            <div class="hero-slide active">
+                <div class="hero-slide-blur" style="background-image: url('images/couverture.png');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/couverture.png');"></div>
             </div>
-
-            <div class="hero-content">
-                <h1 class="hero-title">On se marie</h1>
-                <p class="hero-subtitle">Nous serions très heureux de partager<br>ce beau moment avec vous</p>
-                <hr class="green-line">
-                <p class="hero-date">Vendredi 18 décembre 2026</p>
-                <span class="heart-green">♥</span>
-                <p class="hero-names">PAULINE <span class="amp">&</span> BENJAMIN</p>
+            <div class="hero-slide">
+                <div class="hero-slide-blur" style="background-image: url('images/photo1.jpg');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/photo1.jpg');"></div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-blur" style="background-image: url('images/photo2.jpg');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/photo2.jpg');"></div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-blur" style="background-image: url('images/photo3.jpg');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/photo3.jpg');"></div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-blur" style="background-image: url('images/photo4.jpg');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/photo4.jpg');"></div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-slide-blur" style="background-image: url('images/photo5.jpg');"></div>
+                <div class="hero-slide-photo" style="background-image: url('images/photo5.jpg');"></div>
             </div>
         </div>
+
+        <!-- Voile sombre dégradé en bas -->
+        <div class="hero-overlay"></div>
+
+        <!-- Décorations florales du faire-part en haut -->
+        <div class="hero-corner hero-corner-tl"></div>
+        <div class="hero-corner hero-corner-tr"></div>
+
+        <!-- Contenu texte en BAS pour ne pas cacher les visages -->
+        <div class="hero-content">
+            <h1 class="hero-title">On se marie ♥</h1>
+            <hr class="green-line">
+            <p class="hero-date">Vendredi 18 décembre 2026</p>
+            <p class="hero-names">PAULINE <span class="amp">&</span> BENJAMIN</p>
+        </div>
+
+        <div class="scroll-indicator">↓ DÉCOUVRIR</div>
     </section>
 
-    <!-- PROGRAMME avec icônes dessinées -->
-    <section id="programme" class="program-section">
+    <!-- PROGRAMME (avec motif feuillage en fond) -->
+    <section id="programme" class="program-section foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Le programme</h2>
             <p class="section-subtitle">Un jour pour célébrer l'amour, entourés de vous</p>
 
             <div class="program-grid">
-                <!-- Cérémonie église -->
                 <div class="program-item">
                     <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                        <!-- Église dessinée -->
                         <path d="M50,15 L50,8 M47,11 L53,11"/>
                         <path d="M50,15 L42,28 L42,75 L70,75 L70,28 Z"/>
                         <path d="M42,28 L70,28"/>
@@ -787,23 +854,19 @@
                         <rect x="82" y="50" width="5" height="10"/>
                         <path d="M42,28 L24,40 L24,75 L42,75"/>
                         <rect x="29" y="50" width="5" height="10"/>
-                        <path d="M55,45 Q56,42 56,40"/>
                     </svg>
                     <h3 class="program-name">Cérémonie<br>à l'église</h3>
                     <p class="program-time">14h00</p>
                 </div>
 
-                <!-- Vin d'honneur -->
                 <div class="program-item">
                     <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                        <!-- Coupes de champagne -->
                         <path d="M30,30 Q30,50 38,55 L38,75 M22,75 L46,75 M30,30 L46,30"/>
                         <path d="M50,30 Q50,50 58,55 L58,75 M42,75 L66,75 M50,30 L66,30"/>
                         <circle cx="33" cy="42" r="1" fill="#2c2c2c"/>
                         <circle cx="36" cy="46" r="1" fill="#2c2c2c"/>
                         <circle cx="53" cy="42" r="1" fill="#2c2c2c"/>
                         <circle cx="56" cy="46" r="1" fill="#2c2c2c"/>
-                        <!-- Petits cœurs -->
                         <path d="M55,18 Q53,15 50,17 Q47,15 45,18 Q45,22 50,25 Q55,22 55,18 Z" fill="#2c2c2c" stroke="none"/>
                         <path d="M70,15 Q69,13 67,14 Q65,13 64,15 Q64,18 67,20 Q70,18 70,15 Z" fill="#2c2c2c" stroke="none"/>
                     </svg>
@@ -811,30 +874,20 @@
                     <p class="program-time">16h00</p>
                 </div>
 
-                <!-- Dîner festif -->
                 <div class="program-item">
                     <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                        <!-- Assiette + couverts -->
                         <ellipse cx="50" cy="55" rx="25" ry="20"/>
                         <ellipse cx="50" cy="55" rx="20" ry="15"/>
-                        <!-- Fourchette -->
                         <path d="M22,30 L22,75 M19,30 L19,40 M25,30 L25,40 M16,30 L16,38"/>
-                        <!-- Couteau -->
                         <path d="M82,30 Q85,35 82,45 L82,75 M82,30 L78,30"/>
-                        <!-- Petite plante sur l'assiette -->
                         <path d="M50,50 L50,40 M48,45 Q50,42 52,45 M46,42 Q50,38 54,42"/>
-                        <!-- Petit menu -->
-                        <rect x="45" y="55" width="10" height="13" fill="white"/>
-                        <path d="M47,60 L53,60 M47,63 L53,63"/>
                     </svg>
                     <h3 class="program-name">Dîner festif</h3>
                     <p class="program-time">19h00</p>
                 </div>
 
-                <!-- Dessert et fiesta -->
                 <div class="program-item">
                     <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                        <!-- Pièce montée -->
                         <path d="M30,75 L70,75"/>
                         <path d="M35,75 L35,68 L65,68 L65,75"/>
                         <ellipse cx="50" cy="68" rx="15" ry="3"/>
@@ -846,7 +899,6 @@
                         <path d="M44,42 Q47,39 50,42 M50,42 Q53,39 56,42"/>
                         <path d="M48,42 L48,35 L52,35 L52,42"/>
                         <circle cx="50" cy="33" r="2"/>
-                        <!-- Pieds -->
                         <path d="M40,75 L42,80 L58,80 L60,75"/>
                     </svg>
                     <h3 class="program-name">Dessert<br>et fiesta</h3>
@@ -856,8 +908,8 @@
         </div>
     </section>
 
-    <!-- LES LIEUX -->
-    <section id="lieux" class="venues">
+    <!-- LIEUX (avec motif feuillage en fond) -->
+    <section id="lieux" class="venues foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Les lieux</h2>
             <p class="section-subtitle">Deux lieux d'exception pour vivre ce moment unique</p>
@@ -884,24 +936,20 @@
         </div>
     </section>
 
-    <!-- BRUNCH DIMANCHE -->
-    <section id="brunch" class="brunch">
+    <!-- BRUNCH (avec motif feuillage en fond) -->
+    <section id="brunch" class="brunch foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Et le lendemain...</h2>
             <p class="section-subtitle">Pour prolonger ce beau moment</p>
 
             <div class="brunch-card">
                 <svg class="brunch-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
-                    <!-- Brunch / viennoiseries sur plateau -->
                     <ellipse cx="50" cy="65" rx="35" ry="8"/>
                     <ellipse cx="50" cy="62" rx="35" ry="8" fill="white"/>
-                    <!-- Croissant -->
                     <path d="M25,55 Q30,45 40,48 Q42,52 38,58 Q32,60 25,55 Z"/>
-                    <!-- Tasse -->
                     <path d="M48,50 L48,62 L58,62 L58,50 Z"/>
                     <path d="M58,53 Q62,53 62,57 Q62,60 58,60"/>
                     <path d="M50,52 Q53,50 56,52"/>
-                    <!-- Pain rond -->
                     <circle cx="70" cy="55" r="6"/>
                     <path d="M67,53 Q70,51 73,53"/>
                 </svg>
@@ -912,8 +960,8 @@
         </div>
     </section>
 
-    <!-- GALERIE -->
-    <section id="galerie" class="gallery">
+    <!-- GALERIE (avec motif feuillage en fond) -->
+    <section id="galerie" class="gallery foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Notre galerie</h2>
             <p class="section-subtitle">Quelques moments précieux à partager</p>
@@ -944,7 +992,7 @@
     </section>
 
     <!-- COMPTE À REBOURS -->
-    <section id="countdown-section" class="countdown-section">
+    <section id="countdown-section" class="countdown-section foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Plus que...</h2>
             <p class="section-subtitle">avant le grand jour</p>
@@ -969,8 +1017,8 @@
         </div>
     </section>
 
-    <!-- RSVP -->
-    <section id="rsvp" class="rsvp">
+    <!-- RSVP (avec motif feuillage en fond) -->
+    <section id="rsvp" class="rsvp foliage-bg">
         <div class="section-container">
             <h2 class="section-title">Répondez-nous</h2>
             <p class="rsvp-deadline">Réponse souhaitée avant le <strong>31 août 2026</strong></p>
@@ -1039,7 +1087,7 @@
         </div>
     </section>
 
-    <!-- FOOTER avec contacts -->
+    <!-- FOOTER -->
     <footer>
         <p class="footer-names">PAULINE <span class="amp">&</span> BENJAMIN MAKUSA</p>
         <p class="footer-address">5, rue de la Drève, 59160 Lomme</p>
@@ -1081,7 +1129,7 @@
             });
         });
 
-        // Diaporama Hero - Change toutes les 20 secondes
+        // Diaporama Hero - Change toutes les 20 secondes avec fondu
         let currentHeroSlide = 0;
         const heroSlides = document.querySelectorAll('.hero-slide');
         const totalHeroSlides = heroSlides.length;
