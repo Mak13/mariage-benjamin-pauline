@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benjamin & Pauline — 18 Décembre 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Pauline & Benjamin — 18 Décembre 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-color: #1a2820;
-            --bg-dark: #0d1813;
-            --bg-light: #243b30;
-            --text-color: #f0e8d4;
-            --text-muted: #c9b896;
-            --gold: #d4af37;
-            --gold-light: #e8c97a;
-            --green-accent: #4a6b54;
+            --bg-color: #faf7f0;
+            --bg-card: #ffffff;
+            --text-color: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --sage-green: #8a9a7b;
+            --sage-dark: #6b7a5e;
+            --sage-light: #b5c4a3;
+            --heart-green: #7a8e6b;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
@@ -30,416 +30,403 @@
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
-            letter-spacing: 2px;
+        }
+
+        /* Motif feuillage SVG répété */
+        .foliage-pattern {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='none' stroke='%238a9a7b' stroke-width='0.6' opacity='0.6'><path d='M20,180 Q40,160 50,140 Q55,125 50,110 M50,140 L40,135 M50,140 L60,135 M50,125 L40,120 M50,125 L60,120 M50,110 L40,105 M50,110 L60,105'/><path d='M180,20 Q160,40 150,60 Q145,75 150,90 M150,60 L160,55 M150,60 L140,55 M150,75 L160,70 M150,75 L140,70 M150,90 L160,85 M150,90 L140,85'/><path d='M100,30 Q120,50 130,80 Q135,95 130,110 M130,80 L140,75 M130,80 L120,75 M130,95 L140,90 M130,95 L120,90'/><path d='M30,100 Q50,90 70,95 Q85,100 95,115 M70,95 L65,85 M70,95 L75,85 M85,105 L80,95 M85,105 L90,95'/><path d='M170,150 Q150,140 130,145 Q115,150 105,165 M130,145 L135,135 M130,145 L125,135'/><ellipse cx='25' cy='25' rx='3' ry='8' transform='rotate(45 25 25)' fill='%238a9a7b' opacity='0.4'/><ellipse cx='175' cy='175' rx='3' ry='8' transform='rotate(45 175 175)' fill='%238a9a7b' opacity='0.4'/><circle cx='100' cy='100' r='2' fill='%238a9a7b' opacity='0.5'/></g></svg>");
+            background-size: 200px 200px;
+            background-repeat: repeat;
+        }
+
+        /* Bordure feuillage encadrant les sections (comme le faire-part) */
+        .leaf-border {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'><g fill='none' stroke='%238a9a7b' stroke-width='0.7' opacity='0.7'><path d='M10,140 Q25,120 35,100 Q40,85 35,70 Q30,55 20,45'/><path d='M35,100 L25,98 M35,100 L45,98 M35,85 L25,83 M35,85 L45,83 M30,70 L20,68 M30,70 L40,68 M25,55 L15,53 M25,55 L35,53'/><path d='M140,10 Q120,25 100,35 Q85,40 70,35 Q55,30 45,20'/><path d='M100,35 L98,25 M100,35 L98,45 M85,30 L83,20 M85,30 L83,40 M70,25 L68,15 M70,25 L68,35'/><circle cx='15' cy='15' r='2' fill='%238a9a7b' opacity='0.6'/></g></svg>");
+            background-size: 150px 150px;
+            background-repeat: repeat;
+            pointer-events: none;
+            opacity: 0.8;
         }
 
         /* Navigation */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
-            padding: 25px 50px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(13, 24, 19, 0.4);
+            background-color: rgba(250, 247, 240, 0.92);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
         }
 
         nav.scrolled {
-            background-color: rgba(13, 24, 19, 0.95);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid var(--sage-light);
         }
 
         .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            color: var(--gold-light);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--sage-dark);
         }
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 30px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--gold-light); }
+        .nav-links a:hover { color: var(--sage-green); }
 
-        /* Hero - Diaporama de fond avec photos qui changent */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 0 20px 80px;
-    overflow: hidden;
-    color: var(--text-color);
-    background-color: var(--bg-dark);
-}
-
-/* Conteneur du diaporama */
-.hero-slideshow {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
-}
-
-/* Chaque slide du diaporama (fond flouté + photo nette) */
-.hero-slide {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0;
-    transition: opacity 3s ease-in-out;
-}
-
-.hero-slide.active {
-    opacity: 1;
-}
-
-/* Photo floutée pour combler les bords */
-.hero-slide-blur {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    filter: blur(30px) brightness(0.3);
-    transform: scale(1.1);
-}
-
-/* Photo nette entière */
-.hero-slide-photo {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-/* Voile sombre dégradé pour lisibilité */
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(180deg, 
-        rgba(13,24,19,0.3) 0%, 
-        rgba(13,24,19,0.3) 50%, 
-        rgba(13,24,19,0.95) 100%);
-    z-index: 3;
-    pointer-events: none;
-}
-
-        /* Décorations florales aux 4 coins */
-        .flower-corner {
-            position: absolute;
-            width: 280px;
-            height: 280px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%23d4af37' stroke-width='1.2' opacity='0.85'><path d='M20,180 Q40,140 70,120 Q90,110 100,90 Q105,75 100,60 Q90,45 75,40' stroke-width='1.5'/><ellipse cx='30' cy='160' rx='8' ry='15' transform='rotate(-30 30 160)' fill='%23d4af37' opacity='0.4'/><ellipse cx='50' cy='140' rx='8' ry='15' transform='rotate(-20 50 140)' fill='%23d4af37' opacity='0.4'/><ellipse cx='70' cy='120' rx='8' ry='15' transform='rotate(-10 70 120)' fill='%23d4af37' opacity='0.4'/><ellipse cx='90' cy='95' rx='8' ry='15' transform='rotate(20 90 95)' fill='%23d4af37' opacity='0.4'/><ellipse cx='100' cy='70' rx='8' ry='15' transform='rotate(40 100 70)' fill='%23d4af37' opacity='0.4'/><circle cx='80' cy='50' r='12' fill='%23d4af37' opacity='0.5'/><circle cx='80' cy='50' r='6' fill='%23e8c97a' opacity='0.7'/><path d='M80,38 Q85,30 90,38 M80,38 Q75,30 70,38 M80,62 Q85,70 90,62 M80,62 Q75,70 70,62 M68,50 Q60,45 60,55 M92,50 Q100,45 100,55' stroke-width='1' fill='none'/><circle cx='130' cy='30' r='8' fill='%23d4af37' opacity='0.5'/><circle cx='130' cy='30' r='4' fill='%23e8c97a' opacity='0.7'/><ellipse cx='40' cy='100' rx='5' ry='10' transform='rotate(-45 40 100)' fill='%23d4af37' opacity='0.4'/><ellipse cx='60' cy='80' rx='5' ry='10' transform='rotate(-35 60 80)' fill='%23d4af37' opacity='0.4'/></g></svg>");
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 4;
-            pointer-events: none;
+        /* HERO - Style faire-part avec bordure feuillage */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            padding: 80px 40px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
         }
 
-        .flower-tl { top: 0; left: 0; }
-        .flower-tr { top: 0; right: 0; transform: scaleX(-1); }
-        .flower-bl { bottom: 0; left: 0; transform: scaleY(-1); }
-        .flower-br { bottom: 0; right: 0; transform: scale(-1, -1); }
+        /* Bordure feuillage tout autour */
+        .hero-leaf-border {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><g fill='none' stroke='%238a9a7b' stroke-width='0.7' opacity='0.85'><path d='M20,160 Q35,140 45,120 Q50,105 45,90 Q40,75 30,65 Q20,55 15,40'/><path d='M45,120 L35,118 M45,120 L55,118 M45,105 L35,103 M45,105 L55,103 M40,90 L30,88 M40,90 L50,88 M35,75 L25,73 M35,75 L45,73 M30,65 L20,63 M30,65 L40,63'/><path d='M160,20 Q140,35 120,45 Q105,50 90,45 Q75,40 65,30'/><path d='M120,45 L118,35 M120,45 L118,55 M105,50 L103,40 M105,50 L103,60 M90,45 L88,35 M90,45 L88,55 M75,40 L73,30 M75,40 L73,50 M65,30 L63,20 M65,30 L63,40'/><path d='M120,160 Q140,140 150,120 Q155,105 150,90'/><path d='M150,120 L160,118 M150,120 L140,118 M150,105 L160,103 M150,105 L140,103 M145,90 L155,88 M145,90 L135,88'/><path d='M20,40 Q40,55 50,75 Q55,90 50,105'/><path d='M50,75 L60,73 M50,75 L40,73 M50,90 L60,88 M50,90 L40,88 M50,105 L60,103 M50,105 L40,103'/><circle cx='15' cy='15' r='2.5' fill='%238a9a7b'/><circle cx='165' cy='15' r='2.5' fill='%238a9a7b'/><circle cx='15' cy='165' r='2.5' fill='%238a9a7b'/><circle cx='165' cy='165' r='2.5' fill='%238a9a7b'/></g></svg>");
+            background-size: 180px 180px;
+            background-repeat: repeat;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-        /* Encadré central avec le texte */
+        /* Carte centrale du hero */
+        .hero-card {
+            position: relative;
+            z-index: 2;
+            background-color: var(--bg-card);
+            padding: 70px 50px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(138, 154, 123, 0.15);
+            overflow: hidden;
+        }
+
+        /* Diaporama photo en fond de carte */
+        .hero-slideshow {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active { opacity: 0.15; }
+
         .hero-content {
             position: relative;
-            z-index: 5;
-            padding: 50px 40px;
-            border: 1px solid rgba(212, 175, 55, 0.6);
-            background: rgba(13, 24, 19, 0.5);
-            backdrop-filter: blur(8px);
-            max-width: 600px;
-            margin: 0 20px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-style: italic;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            color: var(--text-color);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 20px;
         }
 
         .hero-subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            margin-bottom: 25px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
-            font-weight: 300;
-            color: var(--gold-light);
-            text-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 4px 20px rgba(0,0,0,0.8);
-            margin-bottom: 15px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .hero h1 .amp {
             font-style: italic;
-            color: white;
-            margin: 0 15px;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 25px;
+            font-weight: 400;
         }
 
-        .hero-line {
-            width: 60px;
-            height: 1px;
-            background: var(--gold);
+        .green-line {
+            width: 80px;
+            height: 2px;
+            background-color: var(--sage-green);
             margin: 20px auto;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
+            border: none;
         }
 
         .hero-date {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin: 25px 0 15px;
+            font-weight: 400;
+        }
+
+        .heart-green {
+            color: var(--heart-green);
+            font-size: 1.5rem;
+            display: block;
+            margin: 15px 0;
+        }
+
+        .hero-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            color: white;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.2s forwards;
+            font-size: 1.6rem;
+            letter-spacing: 5px;
+            color: var(--text-color);
+            margin-top: 30px;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gold-light);
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            z-index: 5;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards, bounce 2s ease infinite 2.5s;
+        .hero-names .amp {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--sage-green);
+            margin: 0 8px;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .mariage-script {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--sage-green);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
+        .mariage-script::before, .mariage-script::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background-color: var(--sage-green);
         }
 
         /* Sections */
         section {
-            padding: 100px 30px;
-            max-width: 1200px;
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
         }
 
         .section-title {
-            text-align: center;
+            font-style: italic;
             font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: var(--gold-light);
-        }
-
-        .section-subtitle {
+            font-weight: 400;
+            color: var(--text-color);
             text-align: center;
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 40px;
-        }
-
-        /* Séparateur floral */
-        .floral-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px auto 50px;
-        }
-
-        .divider-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .divider-leaf {
-            width: 40px;
-            height: 40px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23d4af37'><path d='M50,10 Q60,30 50,50 Q40,30 50,10 Z'/><path d='M50,90 Q60,70 50,50 Q40,70 50,90 Z'/><path d='M10,50 Q30,40 50,50 Q30,60 10,50 Z'/><path d='M90,50 Q70,40 50,50 Q70,60 90,50 Z'/><circle cx='50' cy='50' r='5'/></g></svg>");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        /* Notre histoire */
-        .story { text-align: center; }
-        .story p {
-            max-width: 700px;
-            margin: 0 auto 20px;
-            font-size: 1.05rem;
-            color: var(--text-muted);
-        }
-
-        /* Lieu */
-        .venue {
-            background-color: var(--bg-dark);
-            max-width: none;
-            margin: 0;
-            text-align: center;
-        }
-
-        .venue-card {
-            max-width: 700px;
-            margin: 30px auto 0;
-            padding: 70px 40px 50px;
-            background: linear-gradient(135deg, rgba(36,59,48,0.6) 0%, rgba(74,107,84,0.3) 100%);
-            border: 1px solid var(--gold);
-            position: relative;
-        }
-
-        .venue-card::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 60px;
-            background-color: var(--bg-dark);
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'><g fill='none' stroke='%23d4af37' stroke-width='1.5'><path d='M60,15 Q80,25 85,45 Q80,35 60,35 Q40,35 35,45 Q40,25 60,15'/><path d='M60,35 L60,75'/><path d='M60,42 Q50,46 45,55'/><path d='M60,42 Q70,46 75,55'/><path d='M60,55 Q48,60 42,70'/><path d='M60,55 Q72,60 78,70'/><circle cx='60' cy='15' r='3' fill='%23d4af37'/></g></svg>");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .venue-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            color: var(--gold-light);
-            margin-bottom: 10px;
-        }
-
-        .venue-subtitle {
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 25px;
-        }
-
-        .venue-address {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .venue-link {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 35px;
-            border: 1px solid var(--gold);
-            color: var(--gold-light);
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .venue-link:hover {
-            background-color: var(--gold);
-            color: var(--bg-dark);
-        }
-
-        /* Programme */
-        .program { max-width: none; margin: 0; }
-
-        .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .program-card {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(74,107,84,0.2) 0%, transparent 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .program-card:hover {
-            background: linear-gradient(135deg, rgba(74,107,84,0.4) 0%, rgba(74,107,84,0.2) 100%);
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-
-        .program-icon {
-            font-size: 2.2rem;
-            color: var(--gold-light);
             margin-bottom: 15px;
         }
 
-        .program-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .section-subtitle {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Programme avec illustrations dessinées */
+        .program-section {
+            background-color: var(--bg-card);
+            padding: 100px 40px;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0;
+            max-width: 1000px;
+            margin: 50px auto 0;
+            position: relative;
+        }
+
+        .program-item {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .program-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            right: 0;
+            width: 1px;
+            height: 40%;
+            background-color: var(--sage-green);
+        }
+
+        .program-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
+        .program-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
             color: var(--text-color);
+            margin-bottom: 25px;
         }
 
         .program-time {
             font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+
+        .program-time::before, .program-time::after {
+            content: '•';
+            margin: 0 8px;
+            color: var(--sage-green);
+        }
+
+        /* Lieux */
+        .venues {
+            background-color: var(--bg-color);
+        }
+
+        .venues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .venue-block {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .venue-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .venue-name {
+            font-style: italic;
             font-size: 1.3rem;
-            color: var(--gold-light);
-            margin-bottom: 8px;
+            color: var(--sage-dark);
+            margin-bottom: 10px;
         }
 
-        .program-card p {
+        .venue-address {
+            font-size: 1.1rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
-        /* Galerie / Carrousel */
+        .venue-link {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid var(--sage-green);
+            color: var(--sage-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .venue-link:hover {
+            background-color: var(--sage-green);
+            color: white;
+        }
+
+        /* Brunch dimanche */
+        .brunch {
+            background-color: var(--bg-card);
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .brunch-card {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            border: 1px solid var(--sage-light);
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .brunch-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        .brunch-day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .brunch-name {
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 15px;
+        }
+
+        .brunch-time {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        /* Galerie carrousel */
         .gallery {
-            background-color: var(--bg-dark);
-            max-width: none;
-            margin: 0;
+            background-color: var(--bg-color);
             text-align: center;
         }
 
         .carousel {
             position: relative;
-            max-width: 1000px;
-            margin: 40px auto 0;
+            max-width: 900px;
+            margin: 50px auto 0;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--gold);
+            border: 1px solid var(--sage-light);
+            background-color: var(--bg-card);
+            padding: 20px;
         }
 
         .carousel-track {
             position: relative;
-            height: 600px;
+            height: 550px;
             background-color: var(--bg-color);
         }
 
@@ -451,10 +438,7 @@
             transition: opacity 1s ease-in-out;
         }
 
-        .carousel-slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
+        .carousel-slide.active { opacity: 1; z-index: 1; }
 
         .carousel-slide img {
             width: 100%;
@@ -462,30 +446,17 @@
             object-fit: cover;
         }
 
-        .carousel-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(13,24,19,0.95) 100%);
-            color: var(--gold-light);
-            padding: 60px 30px 30px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(13, 24, 19, 0.7);
-            color: var(--gold-light);
-            border: 1px solid var(--gold);
-            width: 50px;
-            height: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--sage-dark);
+            border: 1px solid var(--sage-green);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
@@ -495,51 +466,47 @@
         }
 
         .carousel-btn:hover {
-            background-color: var(--gold);
-            color: var(--bg-dark);
-            transform: translateY(-50%) scale(1.1);
+            background-color: var(--sage-green);
+            color: white;
         }
 
-        .carousel-btn.prev { left: 20px; }
-        .carousel-btn.next { right: 20px; }
+        .carousel-btn.prev { left: 30px; }
+        .carousel-btn.next { right: 30px; }
 
         .carousel-indicators {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
+            gap: 10px;
+            margin-top: 25px;
         }
 
         .carousel-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: var(--green-accent);
-            border: 1px solid var(--gold);
+            background-color: var(--sage-light);
+            border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 0;
         }
 
         .carousel-dot.active {
-            background-color: var(--gold);
+            background-color: var(--sage-green);
             transform: scale(1.3);
         }
 
         /* Compte à rebours */
         .countdown-section {
+            background-color: var(--bg-color);
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
-            max-width: none;
-            margin: 0;
-            position: relative;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
+            margin-top: 50px;
             flex-wrap: wrap;
         }
 
@@ -547,55 +514,80 @@
             text-align: center;
             padding: 25px 20px;
             min-width: 110px;
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid var(--gold);
+            background-color: var(--bg-card);
+            border: 1px solid var(--sage-light);
         }
 
         .countdown-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: var(--gold-light);
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--sage-dark);
             display: block;
+            font-style: italic;
         }
 
         .countdown-label {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--text-muted);
+            margin-top: 5px;
         }
 
         /* RSVP */
-        .rsvp { text-align: center; }
+        .rsvp {
+            background-color: var(--bg-card);
+            text-align: center;
+        }
+
+        .rsvp-deadline {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin: 20px 0 10px;
+        }
+
+        .rsvp-deadline strong {
+            color: var(--sage-dark);
+        }
+
+        .rsvp-info {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .rsvp-form {
             max-width: 550px;
-            margin: 40px auto 0;
+            margin: 30px auto 0;
+            text-align: left;
         }
 
         .form-group {
-            margin-bottom: 25px;
-            text-align: left;
+            margin-bottom: 22px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
             margin-bottom: 8px;
-            color: var(--gold);
+            color: var(--text-color);
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--green-accent);
-            background-color: rgba(74, 107, 84, 0.15);
-            font-family: inherit;
+            padding: 12px 15px;
+            border: 1px solid var(--sage-light);
+            background-color: var(--bg-color);
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             color: var(--text-color);
             transition: border-color 0.3s ease;
@@ -605,13 +597,7 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--gold);
-            background-color: rgba(74, 107, 84, 0.25);
-        }
-
-        .form-group select option {
-            background-color: var(--bg-dark);
-            color: var(--text-color);
+            border-color: var(--sage-green);
         }
 
         .checkbox-group {
@@ -619,8 +605,8 @@
             flex-direction: column;
             gap: 12px;
             padding: 15px;
-            border: 1px solid var(--green-accent);
-            background-color: rgba(74, 107, 84, 0.15);
+            border: 1px solid var(--sage-light);
+            background-color: var(--bg-color);
         }
 
         .checkbox-item {
@@ -633,20 +619,18 @@
             width: auto;
             margin: 0;
             cursor: pointer;
-            accent-color: var(--gold);
+            accent-color: var(--sage-green);
         }
 
         .checkbox-item label {
             margin: 0;
-            text-transform: none;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            color: var(--text-color);
+            font-style: italic;
+            font-size: 1rem;
             cursor: pointer;
         }
 
         .form-helper {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 5px;
             font-style: italic;
@@ -654,317 +638,416 @@
 
         .btn {
             display: inline-block;
-            padding: 15px 50px;
-            background-color: var(--gold);
-            color: var(--bg-dark);
+            padding: 14px 50px;
+            background-color: var(--sage-green);
+            color: white;
             border: none;
-            font-size: 0.85rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: inherit;
-            font-weight: 500;
+            margin-top: 20px;
         }
 
         .btn:hover {
-            background-color: var(--gold-light);
+            background-color: var(--sage-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* Footer */
+        /* Footer / Contact */
         footer {
+            background-color: var(--bg-color);
             text-align: center;
-            padding: 50px;
-            background-color: var(--bg-dark);
-            color: var(--gold-light);
-            border-top: 1px solid var(--gold);
+            padding: 80px 40px 40px;
+            border-top: 1px solid var(--sage-light);
         }
 
-        footer p {
+        .footer-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .footer-names .amp {
+            font-style: italic;
+            color: var(--sage-green);
+            margin: 0 8px;
+        }
+
+        .footer-address {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .footer-contacts {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        .footer-contacts a {
+            color: var(--sage-dark);
+            text-decoration: none;
+        }
+
+        .footer-contacts a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-heart {
+            color: var(--heart-green);
+            font-size: 1.5rem;
+            margin-top: 10px;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
-            nav { padding: 20px; }
+            nav { padding: 15px 20px; }
             .nav-links { display: none; }
-            section { padding: 80px 20px; }
-            .countdown { gap: 15px; }
-            .countdown-number { font-size: 2.5rem; }
-            .countdown-item { min-width: 80px; padding: 15px 10px; }
-            .venue-card { padding: 60px 20px 40px; }
-            .carousel-track { height: 400px; }
-            .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; }
-            .carousel-btn.prev { left: 10px; }
-            .carousel-btn.next { right: 10px; }
-            .carousel-caption { font-size: 1.1rem; padding: 40px 20px 20px; }
-            .flower-corner { width: 150px; height: 150px; }
-            .hero-content { padding: 30px 20px; }
+            .hero { padding: 70px 20px 40px; }
+            .hero-card { padding: 50px 25px; }
+            section { padding: 70px 20px; }
+            .program-grid { grid-template-columns: 1fr 1fr; }
+            .program-item:not(:last-child)::after { display: none; }
+            .countdown { gap: 12px; }
+            .countdown-item { min-width: 75px; padding: 15px 8px; }
+            .countdown-number { font-size: 2rem; }
+            .carousel-track { height: 350px; }
+            .carousel-btn.prev { left: 20px; }
+            .carousel-btn.next { right: 20px; }
+            .mariage-script { font-size: 2rem; }
+            .mariage-script::before, .mariage-script::after { width: 30px; }
         }
     </style>
 </head>
 <body>
     <nav id="nav">
-        <div class="nav-logo">B & P</div>
+        <div class="nav-logo">P & B</div>
         <ul class="nav-links">
-            <li><a href="#histoire">Notre Histoire</a></li>
-            <li><a href="#lieu">Le Lieu</a></li>
             <li><a href="#programme">Programme</a></li>
+            <li><a href="#lieux">Les Lieux</a></li>
+            <li><a href="#brunch">Brunch</a></li>
             <li><a href="#galerie">Galerie</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="#rsvp">Répondre</a></li>
         </ul>
     </nav>
 
-    <!-- Hero avec diaporama animé -->
-<section class="hero">
-    
-    <!-- Diaporama de fond -->
-    <div class="hero-slideshow" id="heroSlideshow">
-        <div class="hero-slide active" data-image="images/couverture.png">
-            <div class="hero-slide-blur" style="background-image: url('images/couverture.png');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/couverture.png');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo1.jpg">
-            <div class="hero-slide-blur" style="background-image: url('images/photo1.jpg');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/photo1.jpg');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo2.jpg">
-            <div class="hero-slide-blur" style="background-image: url('images/photo2.jpg');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/photo2.jpg');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo3.jpg">
-            <div class="hero-slide-blur" style="background-image: url('images/photo3.jpg');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/photo3.jpg');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo4.jpg">
-            <div class="hero-slide-blur" style="background-image: url('images/photo4.jpg');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/photo4.jpg');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo5.jpg">
-            <div class="hero-slide-blur" style="background-image: url('images/photo5.jpg');"></div>
-            <div class="hero-slide-photo" style="background-image: url('images/photo5.jpg');"></div>
-        </div>
-        <div class="hero-slide" data-image="images/photo6.jpg">
-    <div class="hero-slide-blur" style="background-image: url('images/photo6.jpg');"></div>
-    <div class="hero-slide-photo" style="background-image: url('images/photo6.jpg');"></div>
-</div>
+    <!-- HERO Style faire-part -->
+    <section class="hero">
+        <div class="hero-leaf-border"></div>
         
-    </div>
-    
-    <!-- Voile sombre -->
-    <div class="hero-overlay"></div>
-    
-    <!-- Décorations florales aux 4 coins -->
-    <div class="flower-corner flower-tl"></div>
-    <div class="flower-corner flower-tr"></div>
-    <div class="flower-corner flower-bl"></div>
-    <div class="flower-corner flower-br"></div>
-    
-    <!-- Encadré central avec le texte -->
-    <div class="hero-content">
-        <p class="hero-subtitle">Nous nous marions</p>
-        <h1>Benjamin <span class="amp">&</span> Pauline</h1>
-        <div class="hero-line"></div>
-        <p class="hero-date">VENDREDI 18 DÉCEMBRE 2026</p>
-    </div>
-    
-    <div class="scroll-indicator">↓ DÉCOUVRIR</div>
-</section>
-
-    <!-- Notre Histoire -->
-    <section id="histoire" class="story">
-        <p class="section-subtitle">— Notre histoire —</p>
-        <h2 class="section-title">Une histoire d'amour</h2>
-        <div class="floral-divider">
-            <div class="divider-line"></div>
-            <div class="divider-leaf"></div>
-            <div class="divider-line"></div>
-        </div>
-        <p>Après de belles années partagées, nous avons décidé d'unir nos vies pour toujours.</p>
-        <p>Nous serions honorés de vous compter parmi nous pour célébrer ce moment unique et inoubliable.</p>
-    </section>
-
-    <!-- Lieu -->
-    <section id="lieu" class="venue">
-        <p class="section-subtitle">— Le lieu de la célébration —</p>
-        <h2 class="section-title">Où nous retrouver</h2>
-        <div class="venue-card">
-            <h3 class="venue-name">Ferme des Templiers</h3>
-            <p class="venue-subtitle">Biez Traiteur</p>
-            <p class="venue-address">📍 57 Rue de Pérenchies</p>
-            <p class="venue-address">59237 Verlinghem</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ferme+des+Templiers+57+Rue+de+P%C3%A9renchies+59237+Verlinghem" 
-               target="_blank" class="venue-link">
-                Voir sur la carte →
-            </a>
-        </div>
-    </section>
-
-    <!-- Programme -->
-    <section id="programme" class="program">
-        <p class="section-subtitle">— Le déroulé de la journée —</p>
-        <h2 class="section-title">Programme</h2>
-        <div class="floral-divider">
-            <div class="divider-line"></div>
-            <div class="divider-leaf"></div>
-            <div class="divider-line"></div>
-        </div>
-        <div class="program-grid">
-            <div class="program-card">
-                <div class="program-icon">💍</div>
-                <h3>Cérémonie</h3>
-                <p class="program-time">14h00</p>
-                <p>Échange des vœux</p>
+        <div class="hero-card">
+            <!-- Diaporama photo en fond -->
+            <div class="hero-slideshow" id="heroSlideshow">
+                <div class="hero-slide active" style="background-image: url('images/couverture.png');"></div>
+                <div class="hero-slide" style="background-image: url('images/photo1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/photo2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/photo3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/photo4.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/photo5.jpg');"></div>
             </div>
-            <div class="program-card">
-                <div class="program-icon">🥂</div>
-                <h3>Cocktail</h3>
-                <p class="program-time">17h00</p>
-                <p>Vin d'honneur</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">🍽️</div>
-                <h3>Dîner</h3>
-                <p class="program-time">19h30</p>
-                <p>Repas festif</p>
-            </div>
-            <div class="program-card">
-                <div class="program-icon">💃</div>
-                <h3>Soirée</h3>
-                <p class="program-time">22h00</p>
-                <p>Danse et célébration</p>
+
+            <div class="hero-content">
+                <h1 class="hero-title">On se marie</h1>
+                <p class="hero-subtitle">Nous serions très heureux de partager<br>ce beau moment avec vous</p>
+                <hr class="green-line">
+                <p class="hero-date">Vendredi 18 décembre 2026</p>
+                <span class="heart-green">♥</span>
+                <p class="hero-names">PAULINE <span class="amp">&</span> BENJAMIN</p>
             </div>
         </div>
     </section>
 
-    <!-- Galerie -->
+    <!-- PROGRAMME avec icônes dessinées -->
+    <section id="programme" class="program-section">
+        <div class="section-container">
+            <h2 class="section-title">Le programme</h2>
+            <p class="section-subtitle">Un jour pour célébrer l'amour, entourés de vous</p>
+
+            <div class="program-grid">
+                <!-- Cérémonie église -->
+                <div class="program-item">
+                    <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
+                        <!-- Église dessinée -->
+                        <path d="M50,15 L50,8 M47,11 L53,11"/>
+                        <path d="M50,15 L42,28 L42,75 L70,75 L70,28 Z"/>
+                        <path d="M42,28 L70,28"/>
+                        <circle cx="56" cy="35" r="3"/>
+                        <path d="M56,32 L56,38 M53,35 L59,35"/>
+                        <path d="M50,50 L50,75 L60,75 L60,50 Q60,45 55,45 Q50,45 50,50 Z"/>
+                        <path d="M70,28 L88,40 L88,75 L70,75"/>
+                        <rect x="74" y="50" width="5" height="10"/>
+                        <rect x="82" y="50" width="5" height="10"/>
+                        <path d="M42,28 L24,40 L24,75 L42,75"/>
+                        <rect x="29" y="50" width="5" height="10"/>
+                        <path d="M55,45 Q56,42 56,40"/>
+                    </svg>
+                    <h3 class="program-name">Cérémonie<br>à l'église</h3>
+                    <p class="program-time">14h00</p>
+                </div>
+
+                <!-- Vin d'honneur -->
+                <div class="program-item">
+                    <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
+                        <!-- Coupes de champagne -->
+                        <path d="M30,30 Q30,50 38,55 L38,75 M22,75 L46,75 M30,30 L46,30"/>
+                        <path d="M50,30 Q50,50 58,55 L58,75 M42,75 L66,75 M50,30 L66,30"/>
+                        <circle cx="33" cy="42" r="1" fill="#2c2c2c"/>
+                        <circle cx="36" cy="46" r="1" fill="#2c2c2c"/>
+                        <circle cx="53" cy="42" r="1" fill="#2c2c2c"/>
+                        <circle cx="56" cy="46" r="1" fill="#2c2c2c"/>
+                        <!-- Petits cœurs -->
+                        <path d="M55,18 Q53,15 50,17 Q47,15 45,18 Q45,22 50,25 Q55,22 55,18 Z" fill="#2c2c2c" stroke="none"/>
+                        <path d="M70,15 Q69,13 67,14 Q65,13 64,15 Q64,18 67,20 Q70,18 70,15 Z" fill="#2c2c2c" stroke="none"/>
+                    </svg>
+                    <h3 class="program-name">Vin d'honneur</h3>
+                    <p class="program-time">16h00</p>
+                </div>
+
+                <!-- Dîner festif -->
+                <div class="program-item">
+                    <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
+                        <!-- Assiette + couverts -->
+                        <ellipse cx="50" cy="55" rx="25" ry="20"/>
+                        <ellipse cx="50" cy="55" rx="20" ry="15"/>
+                        <!-- Fourchette -->
+                        <path d="M22,30 L22,75 M19,30 L19,40 M25,30 L25,40 M16,30 L16,38"/>
+                        <!-- Couteau -->
+                        <path d="M82,30 Q85,35 82,45 L82,75 M82,30 L78,30"/>
+                        <!-- Petite plante sur l'assiette -->
+                        <path d="M50,50 L50,40 M48,45 Q50,42 52,45 M46,42 Q50,38 54,42"/>
+                        <!-- Petit menu -->
+                        <rect x="45" y="55" width="10" height="13" fill="white"/>
+                        <path d="M47,60 L53,60 M47,63 L53,63"/>
+                    </svg>
+                    <h3 class="program-name">Dîner festif</h3>
+                    <p class="program-time">19h00</p>
+                </div>
+
+                <!-- Dessert et fiesta -->
+                <div class="program-item">
+                    <svg class="program-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
+                        <!-- Pièce montée -->
+                        <path d="M30,75 L70,75"/>
+                        <path d="M35,75 L35,68 L65,68 L65,75"/>
+                        <ellipse cx="50" cy="68" rx="15" ry="3"/>
+                        <path d="M37,68 L37,55 L63,55 L63,68"/>
+                        <path d="M37,55 Q40,53 50,53 Q60,53 63,55"/>
+                        <path d="M40,55 Q45,52 50,55 M50,55 Q55,52 60,55"/>
+                        <path d="M42,55 L42,42 L58,42 L58,55"/>
+                        <path d="M42,42 Q44,40 50,40 Q56,40 58,42"/>
+                        <path d="M44,42 Q47,39 50,42 M50,42 Q53,39 56,42"/>
+                        <path d="M48,42 L48,35 L52,35 L52,42"/>
+                        <circle cx="50" cy="33" r="2"/>
+                        <!-- Pieds -->
+                        <path d="M40,75 L42,80 L58,80 L60,75"/>
+                    </svg>
+                    <h3 class="program-name">Dessert<br>et fiesta</h3>
+                    <p class="program-time">21h30</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LES LIEUX -->
+    <section id="lieux" class="venues">
+        <div class="section-container">
+            <h2 class="section-title">Les lieux</h2>
+            <p class="section-subtitle">Deux lieux d'exception pour vivre ce moment unique</p>
+
+            <div class="venues-grid">
+                <div class="venue-block">
+                    <h3 class="venue-label">ÉGLISE</h3>
+                    <p class="venue-name">Saint André Lez-Lille</p>
+                    <p class="venue-address">Place du Général de Gaule<br>59350 St André Lez-Lille</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Place+du+G%C3%A9n%C3%A9ral+de+Gaulle+59350+Saint+Andr%C3%A9+Lez+Lille" target="_blank" class="venue-link">
+                        Voir sur la carte
+                    </a>
+                </div>
+
+                <div class="venue-block">
+                    <h3 class="venue-label">RÉCEPTION</h3>
+                    <p class="venue-name">Ferme des Templiers</p>
+                    <p class="venue-address">57 Rue de Pérenchies<br>59237 Verlinghem</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Ferme+des+Templiers+57+Rue+de+P%C3%A9renchies+59237+Verlinghem" target="_blank" class="venue-link">
+                        Voir sur la carte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRUNCH DIMANCHE -->
+    <section id="brunch" class="brunch">
+        <div class="section-container">
+            <h2 class="section-title">Et le lendemain...</h2>
+            <p class="section-subtitle">Pour prolonger ce beau moment</p>
+
+            <div class="brunch-card">
+                <svg class="brunch-icon" viewBox="0 0 100 100" fill="none" stroke="#2c2c2c" stroke-width="1.2">
+                    <!-- Brunch / viennoiseries sur plateau -->
+                    <ellipse cx="50" cy="65" rx="35" ry="8"/>
+                    <ellipse cx="50" cy="62" rx="35" ry="8" fill="white"/>
+                    <!-- Croissant -->
+                    <path d="M25,55 Q30,45 40,48 Q42,52 38,58 Q32,60 25,55 Z"/>
+                    <!-- Tasse -->
+                    <path d="M48,50 L48,62 L58,62 L58,50 Z"/>
+                    <path d="M58,53 Q62,53 62,57 Q62,60 58,60"/>
+                    <path d="M50,52 Q53,50 56,52"/>
+                    <!-- Pain rond -->
+                    <circle cx="70" cy="55" r="6"/>
+                    <path d="M67,53 Q70,51 73,53"/>
+                </svg>
+                <p class="brunch-day">Dimanche 20 décembre 2026</p>
+                <h3 class="brunch-name">Brunch à la maison</h3>
+                <p class="brunch-time">• 12h00 •</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE -->
     <section id="galerie" class="gallery">
-        <p class="section-subtitle">— Nos plus beaux moments —</p>
-        <h2 class="section-title">Notre Galerie</h2>
-        <div class="floral-divider">
-            <div class="divider-line"></div>
-            <div class="divider-leaf"></div>
-            <div class="divider-line"></div>
-        </div>
-        
-        <div class="carousel" id="carousel">
-            <div class="carousel-track">
-                <div class="carousel-slide active">
-                    <img src="images/photo1.jpg" alt="Photo 1">
-                    <div class="carousel-caption">Notre rencontre</div>
+        <div class="section-container">
+            <h2 class="section-title">Notre galerie</h2>
+            <p class="section-subtitle">Quelques moments précieux à partager</p>
+
+            <div class="carousel" id="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <img src="images/photo1.jpg" alt="Photo 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo2.jpg" alt="Photo 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo3.jpg" alt="Photo 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo4.jpg" alt="Photo 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo5.jpg" alt="Photo 5">
+                    </div>
                 </div>
-                <div class="carousel-slide">
-                    <img src="images/photo2.jpg" alt="Photo 2">
-                    <div class="carousel-caption">Nos premiers voyages</div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/photo3.jpg" alt="Photo 3">
-                    <div class="carousel-caption">Notre demande</div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/photo4.jpg" alt="Photo 4">
-                    <div class="carousel-caption">Moments précieux</div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/photo5.jpg" alt="Photo 5">
-                    <div class="carousel-caption">Vers un nouveau chapitre</div>
-                </div>
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
             </div>
-            <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
-            <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+            <div class="carousel-indicators" id="indicators"></div>
         </div>
-        <div class="carousel-indicators" id="indicators"></div>
     </section>
 
-    <!-- Compte à rebours -->
-    <section id="countdown" class="countdown-section">
-        <p class="section-subtitle">— Plus que quelques jours —</p>
-        <h2 class="section-title">Compte à rebours</h2>
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">--</span>
-                <span class="countdown-label">Jours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">--</span>
-                <span class="countdown-label">Heures</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">--</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">--</span>
-                <span class="countdown-label">Secondes</span>
+    <!-- COMPTE À REBOURS -->
+    <section id="countdown-section" class="countdown-section">
+        <div class="section-container">
+            <h2 class="section-title">Plus que...</h2>
+            <p class="section-subtitle">avant le grand jour</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">--</span>
+                    <span class="countdown-label">Jours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">--</span>
+                    <span class="countdown-label">Heures</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">--</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">--</span>
+                    <span class="countdown-label">Secondes</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- RSVP -->
     <section id="rsvp" class="rsvp">
-        <p class="section-subtitle">— Confirmez votre présence —</p>
-        <h2 class="section-title">RSVP</h2>
-        <div class="floral-divider">
-            <div class="divider-line"></div>
-            <div class="divider-leaf"></div>
-            <div class="divider-line"></div>
-        </div>
-        <p style="color: var(--text-muted);">Merci de confirmer votre présence avant le <strong style="color: var(--gold-light);">1er novembre 2026</strong></p>
-        
-        <form class="rsvp-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
-            <div class="form-group">
-                <label for="name">Nom et prénom *</label>
-                <input type="text" id="name" name="nom" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="presence">Serez-vous présent(e) ? *</label>
-                <select id="presence" name="presence" required>
-                    <option value="">Choisir...</option>
-                    <option value="oui">Oui, avec joie ! 💕</option>
-                    <option value="non">Malheureusement non 😢</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="guests">Nombre de personnes présentes *</label>
-                <input type="number" id="guests" name="nombre_personnes" min="1" max="10" value="1" required>
-                <p class="form-helper">Vous compris (adultes et enfants)</p>
-            </div>
-            <div class="form-group">
-                <label>Régime alimentaire</label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="sans_porc" name="regime_sans_porc" value="Oui">
-                        <label for="sans_porc">🥩 Sans porc</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="vegetarien" name="regime_vegetarien" value="Oui">
-                        <label for="vegetarien">🥗 Végétarien</label>
+        <div class="section-container">
+            <h2 class="section-title">Répondez-nous</h2>
+            <p class="rsvp-deadline">Réponse souhaitée avant le <strong>31 août 2026</strong></p>
+            <p class="rsvp-info">Merci de préciser le nombre de personnes, les restrictions alimentaires et le nombre d'enfants</p>
+            
+            <form class="rsvp-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+                <div class="form-group">
+                    <label for="name">Nom et prénom *</label>
+                    <input type="text" id="name" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="presence">Serez-vous présent(e) ? *</label>
+                    <select id="presence" name="presence" required>
+                        <option value="">Choisir...</option>
+                        <option value="oui">Oui, avec joie ! ♥</option>
+                        <option value="non">Malheureusement non</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Nombre total de personnes *</label>
+                    <input type="number" id="guests" name="nombre_personnes" min="1" max="10" value="1" required>
+                    <p class="form-helper">Vous compris (adultes et enfants)</p>
+                </div>
+                <div class="form-group">
+                    <label for="enfants">Dont nombre d'enfants</label>
+                    <input type="number" id="enfants" name="nombre_enfants" min="0" max="10" value="0">
+                </div>
+                <div class="form-group">
+                    <label>Restrictions alimentaires</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="sans_porc" name="regime_sans_porc" value="Oui">
+                            <label for="sans_porc">Sans porc</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="vegetarien" name="regime_vegetarien" value="Oui">
+                            <label for="vegetarien">Végétarien</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="allergies">Allergies ou intolérances</label>
-                <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
-            </div>
-            <div class="form-group">
-                <label for="message">Message pour les mariés (optionnel)</label>
-                <textarea id="message" name="message" rows="4"></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="Nouvelle réponse RSVP - Mariage Benjamin & Pauline">
-            <button type="submit" class="btn">Envoyer ma réponse</button>
-        </form>
+                <div class="form-group">
+                    <label for="allergies">Allergies ou intolérances</label>
+                    <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
+                </div>
+                <div class="form-group">
+                    <label for="brunch_presence">Présent(e) au brunch du dimanche ?</label>
+                    <select id="brunch_presence" name="brunch_presence">
+                        <option value="">Choisir...</option>
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Un petit mot pour les mariés (optionnel)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="Nouvelle réponse RSVP - Mariage Pauline & Benjamin">
+                <div style="text-align: center;">
+                    <button type="submit" class="btn">Envoyer ma réponse</button>
+                </div>
+            </form>
+        </div>
     </section>
 
+    <!-- FOOTER avec contacts -->
     <footer>
-        <p>Benjamin & Pauline Makusa — 18.12.2026</p>
+        <p class="footer-names">PAULINE <span class="amp">&</span> BENJAMIN MAKUSA</p>
+        <p class="footer-address">5, rue de la Drève, 59160 Lomme</p>
+        <div class="footer-contacts">
+            Pauline · 07.81.99.16.12 · <a href="mailto:paulinemonclaire@yahoo.fr">paulinemonclaire@yahoo.fr</a><br>
+            Benjamin · 06.11.85.59.59 · <a href="mailto:benjamin.makusa@gmail.com">benjamin.makusa@gmail.com</a>
+        </div>
+        <p class="footer-heart">♥</p>
     </footer>
 
     <script>
@@ -973,7 +1056,7 @@
         function updateCountdown() {
             const distance = weddingDate - new Date().getTime();
             if (distance < 0) {
-                document.getElementById('countdown').innerHTML = '<h3>C\'est aujourd\'hui ! 💍</h3>';
+                document.getElementById('countdown').innerHTML = '<h3 style="font-style:italic;color:var(--sage-dark);">C\'est aujourd\'hui ! ♥</h3>';
                 return;
             }
             document.getElementById('days').textContent = String(Math.floor(distance / 86400000)).padStart(2, '0');
@@ -993,27 +1076,26 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Diaporama Hero - Change toutes les 20 secondes avec fondu
-let currentHeroSlide = 0;
-const heroSlides = document.querySelectorAll('.hero-slide');
-const totalHeroSlides = heroSlides.length;
+        // Diaporama Hero - Change toutes les 20 secondes
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const totalHeroSlides = heroSlides.length;
 
-function nextHeroSlide() {
-    heroSlides[currentHeroSlide].classList.remove('active');
-    currentHeroSlide = (currentHeroSlide + 1) % totalHeroSlides;
-    heroSlides[currentHeroSlide].classList.add('active');
-}
+        function nextHeroSlide() {
+            heroSlides[currentHeroSlide].classList.remove('active');
+            currentHeroSlide = (currentHeroSlide + 1) % totalHeroSlides;
+            heroSlides[currentHeroSlide].classList.add('active');
+        }
+        setInterval(nextHeroSlide, 20000);
 
-// Change toutes les 20 secondes
-setInterval(nextHeroSlide, 20000);
-
-        // Carrousel
+        // Carrousel galerie
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
+        const slides = document.querySelectorAll('.carousel .carousel-slide');
         const totalSlides = slides.length;
         let autoplayInterval;
 
