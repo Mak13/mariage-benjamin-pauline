@@ -480,28 +480,52 @@
         .carousel-btn.prev { left: 30px; }
         .carousel-btn.next { right: 30px; }
 
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-        }
+        /* Indicateurs adaptés pour beaucoup de photos */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
 
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--sage-light);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0;
-        }
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--sage-light);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
 
-        .carousel-dot.active {
-            background-color: var(--sage-green);
-            transform: scale(1.3);
-        }
+.carousel-dot.active {
+    background-color: var(--sage-green);
+    transform: scale(1.4);
+    width: 20px;
+    border-radius: 10px;
+}
+
+/* Compteur de photos */
+.carousel-counter {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    z-index: 5;
+    backdrop-filter: blur(5px);
+}
 
         /* Compte à rebours */
         .countdown-section {
@@ -906,28 +930,94 @@
             <p class="section-subtitle">Quelques moments précieux à partager</p>
 
             <div class="carousel" id="carousel">
-                <div class="carousel-track">
-                    <div class="carousel-slide active">
-                        <img src="images/photo1.jpg" alt="Photo 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo2.jpg" alt="Photo 2">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo3.jpg" alt="Photo 3">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo4.jpg" alt="Photo 4">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/photo5.jpg" alt="Photo 5">
-                    </div>
-                </div>
-                <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
-                <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+        <div class="carousel-track">
+            <div class="carousel-slide active">
+                <img src="images/photo1.jpg" alt="Photo 1" loading="lazy">
             </div>
-            <div class="carousel-indicators" id="indicators"></div>
+            <div class="carousel-slide">
+                <img src="images/photo2.jpg" alt="Photo 2" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo3.jpg" alt="Photo 3" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo4.jpg" alt="Photo 4" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo5.jpg" alt="Photo 5" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo6.jpg" alt="Photo 6" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo7.jpg" alt="Photo 7" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo8.jpg" alt="Photo 8" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo9.jpg" alt="Photo 9" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo10.jpg" alt="Photo 10" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo11.jpg" alt="Photo 11" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo12.jpg" alt="Photo 12" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo13.jpg" alt="Photo 13" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo14.jpg" alt="Photo 14" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo15.jpg" alt="Photo 15" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo16.jpg" alt="Photo 16" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo17.jpg" alt="Photo 17" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo18.jpg" alt="Photo 18" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo19.jpg" alt="Photo 19" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo20.jpg" alt="Photo 20" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo21.jpg" alt="Photo 21" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo22.jpg" alt="Photo 22" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo23.jpg" alt="Photo 23" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo24.jpg" alt="Photo 24" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo25.jpg" alt="Photo 25" loading="lazy">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/photo26.jpg" alt="Photo 26" loading="lazy">
+            </div>
         </div>
+        <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
+        <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+        <div class="carousel-counter">
+            <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">26</span>
+        </div>
+    </div>
+    <div class="carousel-indicators" id="indicators"></div>
+</div>
     </section>
 
     <!-- COMPTE À REBOURS -->
@@ -1072,54 +1162,68 @@
         }
         setInterval(nextHeroSlide, 20000);
 
-        // Carrousel galerie
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel .carousel-slide');
-        const totalSlides = slides.length;
-        let autoplayInterval;
+        // ============================================
+// CARROUSEL GALERIE (26 photos)
+// ============================================
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel .carousel-slide');
+const totalSlides = slides.length;
+let autoplayInterval;
 
-        const indicatorsContainer = document.getElementById('indicators');
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.onclick = () => goToSlide(i);
-            indicatorsContainer.appendChild(dot);
-        }
+// Mise à jour du compteur total
+document.getElementById('totalSlidesNum').textContent = totalSlides;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
-        }
+// Création des indicateurs
+const indicatorsContainer = document.getElementById('indicators');
+for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => goToSlide(i);
+    dot.title = `Photo ${i + 1}`;
+    indicatorsContainer.appendChild(dot);
+}
 
-        function changeSlide(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-            resetAutoplay();
-        }
+function showSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => dot.classList.toggle('active', i === index));
+    document.getElementById('currentSlideNum').textContent = index + 1;
+}
 
-        function goToSlide(index) {
-            currentSlide = index;
-            showSlide(currentSlide);
-            resetAutoplay();
-        }
+function changeSlide(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+    resetAutoplay();
+}
 
-        function startAutoplay() {
-            autoplayInterval = setInterval(() => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            }, 5000);
-        }
+function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+    resetAutoplay();
+}
 
-        function resetAutoplay() {
-            clearInterval(autoplayInterval);
-            startAutoplay();
-        }
+function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }, 5000); // Change toutes les 5 secondes
+}
 
-        startAutoplay();
-        const carousel = document.getElementById('carousel');
-        carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-        carousel.addEventListener('mouseleave', startAutoplay);
+function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+}
+
+startAutoplay();
+const carousel = document.getElementById('carousel');
+carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+carousel.addEventListener('mouseleave', startAutoplay);
+
+// Navigation au clavier (flèches gauche/droite)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'ArrowRight') changeSlide(1);
+});
     </script>
 </body>
 </html>
