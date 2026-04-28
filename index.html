@@ -1182,23 +1182,25 @@
                     <label for="enfants">Dont nombre d'enfants</label>
                     <input type="number" id="enfants" name="nombre_enfants" min="0" max="10" value="0">
                 </div>
-                <div class="form-group">
-                    <label>Restrictions alimentaires</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="sans_porc" name="regime_sans_porc" value="Oui">
-                            <label for="sans_porc">Sans porc</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="vegetarien" name="regime_vegetarien" value="Oui">
-                            <label for="vegetarien">Végétarien</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="allergies">Allergies ou intolérances</label>
-                    <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
-                </div>
+                <!-- Restrictions alimentaires (uniquement pour invités au repas) -->
+<div class="form-group" id="dietRestrictions" style="display: none;">
+    <label>Restrictions alimentaires</label>
+    <div class="checkbox-group">
+        <div class="checkbox-item">
+            <input type="checkbox" id="sans_porc" name="regime_sans_porc" value="Oui">
+            <label for="sans_porc">Sans porc</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="vegetarien" name="regime_vegetarien" value="Oui">
+            <label for="vegetarien">Végétarien</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" id="allergiesField" style="display: none;">
+    <label for="allergies">Allergies ou intolérances</label>
+    <input type="text" id="allergies" name="allergies" placeholder="Ex : gluten, fruits à coque, lactose...">
+</div>
                 <div class="form-group">
                     <label for="message">Un petit mot pour les mariés (optionnel)</label>
                     <textarea id="message" name="message" rows="4"></textarea>
@@ -1331,6 +1333,9 @@ document.addEventListener('keydown', (e) => {
 		// ============================================
 // PROGRAMME ADAPTATIF SELON L'INVITATION
 // ============================================
+// ============================================
+// PROGRAMME ADAPTATIF SELON L'INVITATION
+// ============================================
 function adaptProgramme() {
     // Lire le paramètre URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -1341,17 +1346,20 @@ function adaptProgramme() {
         'cocktail': {
             events: ['ceremonie', 'cocktail'],
             message: '<strong>Vous êtes conviés</strong> à la cérémonie religieuse et au vin d\'honneur. ♥',
-            subtitle: 'Voici les moments que nous partagerons ensemble'
+            subtitle: 'Voici les moments que nous partagerons ensemble',
+            showDietRestrictions: false  // 🍽️ Pas de restrictions alimentaires
         },
         'dessert': {
             events: ['ceremonie', 'dessert'],
             message: '<strong>Vous êtes conviés</strong> à la cérémonie religieuse, ainsi qu\'au dessert et à la soirée festive. ♥',
-            subtitle: 'Voici les moments que nous partagerons ensemble'
+            subtitle: 'Voici les moments que nous partagerons ensemble',
+            showDietRestrictions: false  // 🍽️ Pas de restrictions alimentaires
         },
         'complet': {
             events: ['ceremonie', 'cocktail', 'diner', 'dessert'],
             message: null,
-            subtitle: 'Un jour pour célébrer l\'amour, entourés de vous'
+            subtitle: 'Un jour pour célébrer l\'amour, entourés de vous',
+            showDietRestrictions: true  // 🍽️ ✅ Restrictions alimentaires affichées
         }
     };
     
@@ -1369,19 +1377,35 @@ function adaptProgramme() {
     if (config.message) {
         const banner = document.getElementById('invitationBanner');
         const text = document.getElementById('invitationText');
-        text.innerHTML = config.message;
-        banner.style.display = 'block';
+        if (banner && text) {
+            text.innerHTML = config.message;
+            banner.style.display = 'block';
+        }
     }
     
     // Mettre à jour le sous-titre
-    document.getElementById('programmeSubtitle').textContent = config.subtitle;
+    const subtitleEl = document.getElementById('programmeSubtitle');
+    if (subtitleEl) {
+        subtitleEl.textContent = config.subtitle;
+    }
+    
+    // 🍽️ Afficher/cacher les restrictions alimentaires
+    const dietRestrictions = document.getElementById('dietRestrictions');
+    const allergiesField = document.getElementById('allergiesField');
+    
+    if (config.showDietRestrictions) {
+        if (dietRestrictions) dietRestrictions.style.display = 'block';
+        if (allergiesField) allergiesField.style.display = 'block';
+    } else {
+        if (dietRestrictions) dietRestrictions.style.display = 'none';
+        if (allergiesField) allergiesField.style.display = 'none';
+    }
     
     // Adapter le formulaire RSVP
     adaptRSVPForm(invitation);
 }
 
 function adaptRSVPForm(invitation) {
-    // Ajouter un champ caché pour savoir quelle invitation
     const form = document.querySelector('.rsvp-form');
     if (form) {
         let invitField = form.querySelector('input[name="type_invitation"]');
